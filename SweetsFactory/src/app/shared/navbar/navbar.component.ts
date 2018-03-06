@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'navi-bar',
-    template: `
-    <ul class="dropdown menu" data-dropdown-menu>
+  selector: 'navi-bar',
+  template: `
+    <ul class="menu vertical" data-dropdown-menu>
     <li>
       <a href="#">Item 1</a>
       <ul class="menu">
@@ -16,15 +16,14 @@ import { Component, OnInit } from '@angular/core';
     <li><a href="#">Item 4</a></li>
   </ul>
     `,
-    styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css']
 })
 
 export class NavComponent implements OnInit {
-  constructor() {}
-
+  constructor() { }
   ngOnInit() {
     const options = { /* Reveal Options, if any */ };
-const $myRevealElement = $('.dropdown');
-var elem = new Foundation.DropdownMenu($myRevealElement, options);
+    const $myRevealElement = $('.dropdown');
+    var elem = new Foundation.DropdownMenu($myRevealElement, options);
   }
 }
