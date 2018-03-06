@@ -18,7 +18,7 @@
     "@angular/router": "~4.3.4",
     "core-js": "^2.5.0",
     "firebase": "^4.2.0",
-    "foundation-sites": "^6.4.2",
+    "foundation-sites": "^6.4.4-rc1",
     "jquery": "^3.2.1",
     "rxjs": "5.4.3",
     "zone.js": "^0.8.16"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.42",
     "@types/jasmine": "^2.5.53",
+    "@types/jquery": "^3.3.0",
     "@types/node": "^8.0.20",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.3",
