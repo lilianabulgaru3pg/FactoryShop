@@ -1,0 +1,4 @@
+<h2>{{menuTitle | lowercase }}</h2>
+<ul class="vertical menu main-meniu" data-responsive-menu="drilldown medium-accordion" style="max-width: 250px;" *ngFor="let i of menuItems">
+<li><a href={{i.path}}>{{i.text | uppercase}}</a></li>
+</ul>

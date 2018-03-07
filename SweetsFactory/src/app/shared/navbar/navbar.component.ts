@@ -1,29 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItemComponent, MenuItem } from '../menuItem/menuItem.component';
+
 
 @Component({
   selector: 'navi-bar',
-  template: `
-    <ul class="menu vertical" data-dropdown-menu>
-    <li>
-      <a href="#">Item 1</a>
-      <ul class="menu">
-        <li><a href="#">Item 1A</a></li>
-        <!-- ... -->
-      </ul>
-    </li>
-    <li><a href="#">Item 2</a></li>
-    <li><a href="#">Item 3</a></li>
-    <li><a href="#">Item 4</a></li>
-  </ul>
-    `,
+  templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 
 export class NavComponent implements OnInit {
-  constructor() { }
+  menuTitle = 'Sweets Factory'; //TODO: trebuie scos intr-un fisier
+  menuItems : MenuItem[];
+
+  constructor() { 
+    this.menuItems = [];
+  }
+
   ngOnInit() {
     const options = { /* Reveal Options, if any */ };
-    const $myRevealElement = $('.dropdown');
-    var elem = new Foundation.DropdownMenu($myRevealElement, options);
+    const $menuElement = $('.main-meniu');
+    var elem = new Foundation.AccordionMenu($menuElement, options);
+
+    this.addMenuItem('Home', '/#');
+    this.addMenuItem('Category', '/#');
+    this.addMenuItem('Products', '/#');
+  }
+  addMenuItem(name: String, path: String ){
+     var item : MenuItem = {text: name, path: path};
+    this.menuItems.push(item);
   }
 }
