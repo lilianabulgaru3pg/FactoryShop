@@ -1,10 +1,8 @@
-
-.top-bar-title {
-    font-family: 'Coiny', cursive;
-    font-size: 22px;
-    color: #ffffff;
+.navbar-grid {
+    height: 100vh;
+    background-color: #202020;
 }
 
-.nav-menu a {
-    color: black;
+.menu-title {
+    color: whitesmoke;
 }

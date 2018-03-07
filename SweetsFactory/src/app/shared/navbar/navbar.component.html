@@ -1,4 +1,10 @@
-<h2>{{menuTitle | lowercase }}</h2>
-<ul class="vertical menu main-meniu" data-responsive-menu="drilldown medium-accordion" style="max-width: 250px;" *ngFor="let i of menuItems">
-<li><a href={{i.path}}>{{i.text | uppercase}}</a></li>
-</ul>
+<div class="grid-y navbar-grid align-center-middle">
+    <div class="cell large-2 medium-3  align-center-middle">
+        <h3 class="menu-title separator-center">{{menuTitle | lowercase }}</h3>
+    </div>
+    <ul class=" cell shrink vertical menu main-meniu " data-responsive-menu="drilldown medium-accordion" *ngFor="let i of menuItems">
+        <li>
+            <menu-item [path]='i.path' [text]='i.text' ></menu-item>
+        </li>
+    </ul>
+</div>

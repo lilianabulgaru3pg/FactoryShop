@@ -10,7 +10,7 @@ import { MenuItemComponent, MenuItem } from '../menuItem/menuItem.component';
 
 export class NavComponent implements OnInit {
   menuTitle = 'Sweets Factory'; //TODO: trebuie scos intr-un fisier
-  menuItems : MenuItem[];
+  menuItems : any[];
 
   constructor() { 
     this.menuItems = [];
