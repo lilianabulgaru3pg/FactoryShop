@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'account',
     template: `
-    <button class="hollow button" (click)="login()">{{account}}</button>
+            <button class="hollow button"><a routerLink="/login" routerLinkActive="active">{{account}}</a></button>
     `,
     styles: [`
     .button {
@@ -14,5 +14,4 @@ import { Component } from '@angular/core';
 export class AccountComponent {
     account = 'Account';
     constructor() { }
-    login() { }
 }

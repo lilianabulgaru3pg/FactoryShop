@@ -10,6 +10,7 @@ import { MenuItemComponent } from './shared/menuItem/menuItem.component';
 import { CartComponent } from './shared/cart/cart.component';
 import { TopBarComponent } from './shared/topbar/topbar.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './shared/app.routing';
 
@@ -28,6 +29,7 @@ import { AppRoutingModule } from './shared/app.routing';
         TopBarComponent,
         NavComponent,
         HomeComponent,
+        LoginComponent,
         ErrorComponent
     ],
     bootstrap: [AppComponent]
