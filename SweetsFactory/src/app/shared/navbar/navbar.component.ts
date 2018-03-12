@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
     const $menuElement = $('.main-meniu');
     var elem = new Foundation.AccordionMenu($menuElement, options);
 
-    this.addMenuItem('Home', '/#');
+    this.addMenuItem('Home', '/home');
     this.addMenuItem('Category', '/#');
     this.addMenuItem('Products', '/#');
   }

@@ -7,7 +7,7 @@ export class MenuItem {
 @Component({
     selector: 'menu-item',
     template: `
-        <a class="text-center" href={{path}}>{{text}}</a>
+        <a class="text-center" routerLink={{path}} routerLinkActive="active">{{text}}</a>
     `,
     styles: [`
     a {
