@@ -1,3 +1,9 @@
 <div class="row expanded">
-    <img  class="home-bg" src="../shared/images/sweet-bg.png">
+    <label>name:
+        <input [(ngModel)]="user.name" placeholder="name" />
+    </label>
+    <label>password:
+        <input [(ngModel)]="user.password" placeholder="password" />
+    </label>
+    <button (click)="login()">Login</button>
 </div>

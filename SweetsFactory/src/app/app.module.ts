@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './start/app.component';
 import { FormsModule } from '@angular/forms';
 
+//services
+import { UserService } from './shared/services/user.service'
+
 import { NavComponent } from './shared/navbar/navbar.component';
 import { SearchBarComponent } from './shared/searchbar/search.component';
 import { AccountComponent } from './shared/account/account.component';
@@ -32,6 +35,7 @@ import { AppRoutingModule } from './shared/app.routing';
         LoginComponent,
         ErrorComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [UserService]
 })
 export class AppModule { }
