@@ -9,10 +9,10 @@ import { MenuItemComponent, MenuItem } from '../menuItem/menuItem.component';
 })
 
 export class NavComponent implements OnInit {
-  menuTitle = 'Sweets Factory'; //TODO: trebuie scos intr-un fisier
-  menuItems : any[];
+  menuTitle = 'Factory.'; //TODO: trebuie scos intr-un fisier
+  menuItems: any[];
 
-  constructor() { 
+  constructor() {
     this.menuItems = [];
   }
 
@@ -25,8 +25,8 @@ export class NavComponent implements OnInit {
     this.addMenuItem('Category', '/#');
     this.addMenuItem('Products', '/#');
   }
-  addMenuItem(name: String, path: String ){
-     var item : MenuItem = {text: name, path: path};
+  addMenuItem(name: String, path: String) {
+    var item: MenuItem = { text: name, path: path };
     this.menuItems.push(item);
   }
 }
