@@ -9,20 +9,17 @@ import { EventEmitter } from 'events';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    @Output() notifyParent: EventEmitter = new EventEmitter();
     showMessage = false;
     account = {
         name: '', 
         password: ''
     }
     constructor(private userService: UserService, private route: Router) {
-        
     }
 
     login(): void {
         let isLogged = this.userService.isValidUser(this.account.name, this.account.password)
         if (isLogged) {
-            this.notifyParent.emit('hasLoggedIn');
             this.route.navigate(['/home']);
         } else {
             this.showMessage = true;
