@@ -1,9 +1,12 @@
 <div class="row expanded">
     <label>name:
-        <input [(ngModel)]="user.name" placeholder="name" />
+        <input [(ngModel)]="account.name" placeholder="name" />
     </label>
     <label>password:
-        <input [(ngModel)]="user.password" placeholder="password" />
+        <input [(ngModel)]="account.password" placeholder="password" />
     </label>
     <button (click)="login()">Login</button>
+    <div *ngIf ="showMessage">
+        <p>The user name or password is incorerect!</p>
+    </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItemComponent, MenuItem } from '../menuItem/menuItem.component';
+import { UserService } from '../services/user.service';
+import { BUYER, ADMIN } from '../mock-users';
 
 
 @Component({
@@ -10,23 +12,27 @@ import { MenuItemComponent, MenuItem } from '../menuItem/menuItem.component';
 
 export class NavComponent implements OnInit {
   menuTitle = 'Factory.'; //TODO: trebuie scos intr-un fisier
-  menuItems: any[];
+  menuItems: MenuItem[] = BUYER;
+  isAdmin = false;
 
-  constructor() {
-    this.menuItems = [];
+  constructor(public userService: UserService) {
+    userService.loginAnnounced$.subscribe(
+      user => this.isAdmin = user.isAdmin
+    )
   }
 
   ngOnInit() {
     const options = { /* Reveal Options, if any */ };
     const $menuElement = $('.main-meniu');
     var elem = new Foundation.AccordionMenu($menuElement, options);
-
-    this.addMenuItem('Home', '/home');
-    this.addMenuItem('Category', '/#');
-    this.addMenuItem('Products', '/#');
+    this.showmenu();
   }
-  addMenuItem(name: String, path: String) {
-    var item: MenuItem = { text: name, path: path };
-    this.menuItems.push(item);
+
+  showmenu() {
+    if (!this.isAdmin) {
+        this.menuItems = BUYER;
+    } else {
+      this.menuItems = ADMIN;
+    }
   }
 }

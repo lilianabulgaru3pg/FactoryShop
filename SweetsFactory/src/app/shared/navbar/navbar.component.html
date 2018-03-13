@@ -2,9 +2,9 @@
     <div class="cell align-center-middle">
         <h3 class="menu-title">{{menuTitle | lowercase }}</h3>
     </div>
-    <ul class=" cell shrink vertical menu main-meniu " data-responsive-menu="drilldown medium-accordion" *ngFor="let i of menuItems">
-        <li>
-            <menu-item [path]='i.path' [text]='i.text'></menu-item>
+    <ul class=" cell shrink vertical menu main-meniu " data-responsive-menu="drilldown medium-accordion" >
+        <li *ngFor="let i of menuItems">
+            <menu-item [path]='i.path' [pathName]='i.pathName'></menu-item>
         </li>
     </ul>
 </div>

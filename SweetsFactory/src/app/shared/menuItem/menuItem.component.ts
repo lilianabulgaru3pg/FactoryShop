@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 export class MenuItem {
-     text: String;
+    pathName: String;
      path: String
 }
 @Component({
     selector: 'menu-item',
     template: `
-        <a class="text-center" routerLink={{path}} routerLinkActive="active">{{text}}</a>
+        <button><a class="text-center" routerLink={{path}} routerLinkActive="active">{{pathName}}</a></button>
     `,
     styles: [`
     a {
@@ -16,7 +16,7 @@ export class MenuItem {
 })
 
 export class MenuItemComponent {
-    @Input() text: String;
+    @Input() pathName: String;
     @Input() path: String;
     constructor() {
     }

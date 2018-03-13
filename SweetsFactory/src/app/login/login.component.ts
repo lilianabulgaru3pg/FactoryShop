@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/model/user';
+import { Router } from '@angular/router';
+import { EventEmitter } from 'events';
 
 @Component({
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    user: User = {
-        id: 0, name: '', password: '', isAdmin: false
+    @Output() notifyParent: EventEmitter = new EventEmitter();
+    showMessage = false;
+    account = {
+        name: '', 
+        password: ''
     }
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private route: Router) {
+        
     }
 
     login(): void {
-        let isValid = this.userService.validUser(this.user);
-        console.log(isValid);
+        let isLogged = this.userService.isValidUser(this.account.name, this.account.password)
+        if (isLogged) {
+            this.notifyParent.emit('hasLoggedIn');
+            this.route.navigate(['/home']);
+        } else {
+            this.showMessage = true;
+        }
     }
 }
 
