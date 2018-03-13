@@ -17,7 +17,9 @@ export class NavComponent implements OnInit {
 
   constructor(public userService: UserService) {
     userService.loginAnnounced$.subscribe(
-      user => this.isAdmin = user.isAdmin
+      user => { this.isAdmin = user.isAdmin;
+      this.showmenu();
+      }
     )
   }
 
