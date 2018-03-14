@@ -19,6 +19,8 @@ import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './shared/app.routing';
 import { CartComponent } from './cart/cart.component';
 import { ProductItemComponent } from './shared/product/productItem.component';
+import { ProductService } from './shared/services/product.service';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
     imports: [
@@ -39,9 +41,10 @@ import { ProductItemComponent } from './shared/product/productItem.component';
         LoginComponent,
         OrdersComponent,
         CartComponent,
+        CategoryComponent,
         ErrorComponent
     ],
     bootstrap: [AppComponent],
-    providers: [UserService]
+    providers: [UserService, ProductService]
 })
 export class AppModule { }
