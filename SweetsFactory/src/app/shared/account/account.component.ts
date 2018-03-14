@@ -14,7 +14,7 @@ import { User } from '../model/user';
 export class AccountComponent implements OnInit {
     accountName: String = "Account";
     isLogedIn = this.userService.isLogged;
-    
+
     constructor(public userService: UserService) {
         userService.loginAnnounced$.subscribe(
             user => this.updateAccount(user));
@@ -27,5 +27,9 @@ export class AccountComponent implements OnInit {
         } else {
             this.accountName = "Account";
         }
+    }
+
+    loggOut(){
+        console.log('loggOut');
     }
 }

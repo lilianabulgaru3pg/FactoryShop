@@ -1,8 +1,7 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/model/user';
 import { Router } from '@angular/router';
-import { EventEmitter } from 'events';
 
 @Component({
     templateUrl: './login.component.html',

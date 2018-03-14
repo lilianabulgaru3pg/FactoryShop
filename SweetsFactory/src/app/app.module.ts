@@ -10,12 +10,14 @@ import { NavComponent } from './shared/navbar/navbar.component';
 import { SearchBarComponent } from './shared/searchbar/search.component';
 import { AccountComponent } from './shared/account/account.component';
 import { MenuItemComponent } from './shared/menuItem/menuItem.component';
-import { CartComponent } from './shared/cart/cart.component';
+import { ShopCartComponent } from './shared/shopcart/shopcart.component';
 import { TopBarComponent } from './shared/topbar/topbar.component';
 import { HomeComponent } from './home/home.component';
+import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './shared/app.routing';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
     imports: [
@@ -26,13 +28,15 @@ import { AppRoutingModule } from './shared/app.routing';
     declarations: [
         AppComponent,
         SearchBarComponent,
-        CartComponent,
+        ShopCartComponent,
         MenuItemComponent,
         AccountComponent,
         TopBarComponent,
         NavComponent,
         HomeComponent,
         LoginComponent,
+        OrdersComponent,
+        CartComponent,
         ErrorComponent
     ],
     bootstrap: [AppComponent],
