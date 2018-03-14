@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './shared/app.routing';
 import { CartComponent } from './cart/cart.component';
+import { ProductItemComponent } from './shared/product/productItem.component';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { CartComponent } from './cart/cart.component';
     ],
     declarations: [
         AppComponent,
+        ProductItemComponent,
         SearchBarComponent,
         ShopCartComponent,
         MenuItemComponent,
