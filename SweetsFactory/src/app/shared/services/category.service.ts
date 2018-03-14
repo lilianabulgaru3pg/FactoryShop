@@ -3,17 +3,17 @@ import { Category } from '../model/category';
 import { CATEGORY } from '../../mock-products';
 import { ProductService } from './product.service';
 import { Product } from '../model/product';
+import { Stock } from '../model/stock';
 
 @Injectable()
 export class CategoryService {
     categories: Category[];
     products: Product[];
-    stock: Map<number, number>;
+    stock: Stock[] = new Array<Stock>();
 
     constructor(private productService: ProductService) {
         this.products = this.productService.getProducts();
         this.categories = this.getCategories();
-        this.stock = new Map<number, number>();
         this.getCategoriesStock();
     }
 
@@ -21,10 +21,14 @@ export class CategoryService {
         return CATEGORY;
     }
 
+    getCategoryName(id: number) {
+
+    }
+
     getCategoriesStock() {
         this.categories.forEach(element => {
             let stockNo = this.getStock(element.id);
-            this.stock.set(element.id, stockNo);
+            this.stock.push(new Stock(element.name, stockNo));
         });
     }
 
@@ -37,9 +41,4 @@ export class CategoryService {
         });
         return no;
     }
-
-    getStockNo(category: number): number {
-        return this.stock.get(category);
-    }
-
 }

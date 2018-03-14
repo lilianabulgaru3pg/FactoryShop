@@ -6,14 +6,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Content Goes Here</td>
-            <td>Content Goes Here</td>
+        <tr *ngFor="let stock of stocks">
+            <td >{{stock.categoryName}}</td>
+            <td>{{stock.stockNumber}}</td>
         </tr>
-        <tr>
-            <td>Content Goes Here</td>
-            <td>Content Goes Here</td>
-        </tr>
-
     </tbody>
 </table>
