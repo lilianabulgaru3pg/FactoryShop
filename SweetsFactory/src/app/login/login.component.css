@@ -1,3 +1,28 @@
 input {
     display: block;
+    height: 2rem;
+    width: 12rem;
+}
+.incorrect-message {
+    color: red;
+}
+
+.login-comp {
+    min-height: 100%;
+    min-width: 100%;
+    padding: 1.5rem;
+    background-color: rgb(244, 244, 245);
+}
+
+.custom-btn {
+    width: 8rem;
+    margin-top: 1rem;
+    background-color: gainsboro;
+    border-color: lightgrey;
+    color: grey;
+}
+
+.custom-btn:hover, .custom-btn:focus {
+    background-color: rgba(255, 166, 0, 0.911);
+    border-color: gainsboro;
 }

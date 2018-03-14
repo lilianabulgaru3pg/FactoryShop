@@ -1,12 +1,14 @@
-<div class="row expanded">
-    <label>name:
-        <input [(ngModel)]="account.name" placeholder="name" />
-    </label>
-    <label>password:
-        <input [(ngModel)]="account.password" placeholder="password" />
-    </label>
-    <button (click)="login()">Login</button>
-    <div *ngIf ="showMessage">
-        <p>The User Name or Password is Incorrect!</p>
+<div class="login-comp row small-up-1 ">
+    <div class="column column-block">
+        <label>Name:
+            <input [(ngModel)]="account.name" placeholder="name" />
+        </label>
+        <label>Password:
+            <input [(ngModel)]="account.password" placeholder="password" />
+        </label>
+        <div *ngIf="showMessage" class="incorrect-message">
+            <p>The User Name or Password is Incorrect!</p>
+        </div>
+        <button (click)="login()" class="hollow button custom-btn">Login</button>
     </div>
 </div>
