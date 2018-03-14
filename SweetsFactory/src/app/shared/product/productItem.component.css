@@ -1,5 +1,16 @@
 
-.img-145 {
-    height: 145px;
-    width: 145px;
+.img-15 {
+    height: 16rem;
+    width: 15rem;
+}
+
+.item {
+    display: inline-block;
+    margin: 1rem;
+    width: 20rem;
+    height: 24rem;
+    border: solid 4px #fefefe;
+    border-radius: 0;
+    box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
+    line-height: 0;
 }
