@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   constructor(public userService: UserService) {
     userService.loginAnnounced$.subscribe(
       user => { this.isAdmin = user.isAdmin;
-      this.showmenu();
+      this.updateMenu();
       }
     )
   }
@@ -27,10 +27,10 @@ export class NavComponent implements OnInit {
     const options = { /* Reveal Options, if any */ };
     const $menuElement = $('.main-meniu');
     var elem = new Foundation.AccordionMenu($menuElement, options);
-    this.showmenu();
+    this.updateMenu();
   }
 
-  showmenu() {
+  updateMenu() {
     if (!this.isAdmin) {
         this.menuItems = BUYER;
     } else {

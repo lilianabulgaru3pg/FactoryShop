@@ -12,7 +12,7 @@ import { User } from '../model/user';
 })
 
 export class AccountComponent implements OnInit {
-    accountName: String = "Account";
+    accountName: string = "Account";
     isLogedIn = this.userService.isLogged;
 
     constructor(public userService: UserService) {
@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit {
         }
     }
 
-    loggOut(){
-        console.log('loggOut');
+    logout(){
+       
     }
 }

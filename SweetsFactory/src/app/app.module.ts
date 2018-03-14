@@ -21,6 +21,7 @@ import { CartComponent } from './cart/cart.component';
 import { ProductItemComponent } from './shared/product/productItem.component';
 import { ProductService } from './shared/services/product.service';
 import { CategoryComponent } from './category/category.component';
+import { CategoryService } from './shared/services/category.service';
 
 @NgModule({
     imports: [
@@ -45,6 +46,6 @@ import { CategoryComponent } from './category/category.component';
         ErrorComponent
     ],
     bootstrap: [AppComponent],
-    providers: [UserService, ProductService]
+    providers: [UserService, ProductService, CategoryService]
 })
 export class AppModule { }

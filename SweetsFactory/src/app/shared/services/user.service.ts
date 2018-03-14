@@ -25,7 +25,7 @@ export class UserService {
         return USERS;
     }
 
-    isValidUser(userName: String, password: String): boolean {
+    isValidUser(userName: string, password: string): boolean {
         this.users.forEach(elem => {
             if (elem.name == userName && elem.password == password) {
                 this.userLogedin(elem);

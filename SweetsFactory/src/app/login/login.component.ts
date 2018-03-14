@@ -13,8 +13,7 @@ export class LoginComponent {
         name: '', 
         password: ''
     }
-    constructor(private userService: UserService, private route: Router) {
-    }
+    constructor(private userService: UserService, private route: Router) {}
 
     login(): void {
         let isLogged = this.userService.isValidUser(this.account.name, this.account.password)

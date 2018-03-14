@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 export class MenuItem {
-    pathName: String;
-     path: String
+    pathName: string;
+    path: string
 }
 @Component({
     selector: 'menu-item',
@@ -16,8 +16,7 @@ export class MenuItem {
 })
 
 export class MenuItemComponent {
-    @Input() pathName: String;
-    @Input() path: String;
-    constructor() {
-    }
+    @Input() pathName: string;
+    @Input() path: string;
+    constructor() { }
 }

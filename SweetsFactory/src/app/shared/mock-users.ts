@@ -9,7 +9,7 @@ export const USERS: User[] = [
 
 export const ADMIN : MenuItem[] = [
   {pathName:'Home', path:'/home'},
-  {pathName:'Categories', path:'/categories'},
+  {pathName:'Categories', path:'/category'},
   {pathName:'Orders', path:'/orders'},
 ];
 
