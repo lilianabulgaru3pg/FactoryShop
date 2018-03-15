@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'cart',
     template: `
-        <button class="hollow button" (click)="showCart()"><a routerLink="/cart" routerLinkActive="active">{{cart}}</a></button>
+        <button class="clear button" (click)="showCart()"><a routerLink="/cart" routerLinkActive="active">{{cart}}</a></button>
         `,
     styles: [`
         .button {

@@ -34,4 +34,10 @@ export class UserService {
         });
         return this.isLogged;
     }
+
+    logout(){
+        this.isLogged = false;
+        this.currentUser = new User();
+        this.loginAnnouncedSource.next(this.currentUser);
+    }
 }

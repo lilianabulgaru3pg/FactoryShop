@@ -5,7 +5,7 @@ export const PRODUCTS: Product[] = [
     { id: 55, name: "Vanilla Ice cream", category: 1, price: 20, stock: 10, img: "" },
     { id: 25, name: "Chocolate Ice cream", category: 1, price: 22, stock: 22, img: "" },
     { id: 23, name: "Raspberry Ice cream", category: 1, price: 32, stock: 120, img: "" },
-    { id: 26, name: "Raspberry Ice cream", category: 1, price: 12, stock: 110, img: "" },
+    { id: 26, name: "Banana Ice cream", category: 1, price: 12, stock: 110, img: "" },
     { id: 27, name: "Macaroon", category: 2, price: 10, stock: 50, img: "" },
     { id: 28, name: "Chocolate Cookies", category: 2, price: 20, stock: 10, img: "" },
     { id: 29, name: "Apple Pie", category: 3, price: 25, stock: 10, img: "" },
