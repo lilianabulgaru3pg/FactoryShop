@@ -1,0 +1,14 @@
+<table class="hover">
+    <thead>
+        <tr>
+            <th width="150">Categories</th>
+            <th width="150">Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stock of stocks">
+            <td >{{stock.categoryName}}</td>
+            <td>{{stock.stockNumber}}</td>
+        </tr>
+    </tbody>
+</table>
