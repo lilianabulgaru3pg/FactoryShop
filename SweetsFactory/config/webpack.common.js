@@ -3,19 +3,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
-// Try the environment variable, otherwise use root
-const ASSET_PATH = process.env.ASSET_PATH || '/images/';
-
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
     'app': './src/main.ts'
-  },
-
-  output: {
-    path: "/src",
-    publicPath: ASSET_PATH
   },
 
   resolve: {
@@ -61,10 +53,6 @@ module.exports = {
     ),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills']
-    }),
-    // This makes it possible for us to safely use env vars on our code
-    new webpack.DefinePlugin({
-      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
 
     new HtmlWebpackPlugin({
