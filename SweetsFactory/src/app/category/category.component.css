@@ -28,4 +28,14 @@ table tr:nth-child(even) td{
     background-color: white;
 }
 
+.top-header {
+    position: relative;
+}
+
+.new-category-btn {
+    position: absolute;
+    right: 1.2rem;
+    top: 1rem;
+}
+
 
