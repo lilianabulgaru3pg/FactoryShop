@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
 import { Router } from '@angular/router';
@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
 
 export class AccountComponent implements OnInit {
     accountName: string = "Account";
-    isLogedIn = this.userService.isLogged;
     logoutBox: any;
+    isLogged: boolean = false;
 
-    constructor(public userService: UserService,  private route: Router) {
+    constructor(public userService: UserService, private route: Router) {
         userService.loginAnnounced$.subscribe(
-            user => this.updateAccount(user));
+            user => {
+                this.isLogged = this.userService.isLogged;
+                this.updateAccount(user);
+            });
     }
-    ngOnInit() {
-    }
+    ngOnInit() { }
 
     updateAccount(newUser: User) {
         if (newUser.id) {
@@ -30,14 +32,11 @@ export class AccountComponent implements OnInit {
         } else {
             this.accountName = "Account";
         }
-        this.isLogedIn = this.userService.isLogged;
     }
 
     logout() {
-       console.log('logout');
-       this.userService.logout();
-       this.accountName = "Account";
-       this.logoutBox.close();
-       this.route.navigate(['/home']);
+        this.userService.logout();
+        this.logoutBox.close();
+        this.route.navigate(['/login']);
     }
 }

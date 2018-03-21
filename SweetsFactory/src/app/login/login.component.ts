@@ -9,16 +9,24 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
     showMessage = false;
+    isAdmin = false;
+
     account = {
-        name: '', 
+        name: '',
         password: ''
     }
-    constructor(private userService: UserService, private route: Router) {}
+    constructor(private userService: UserService, private route: Router) {
+        userService.loginAnnounced$.subscribe(
+            user => {
+                this.isAdmin = user.isAdmin;
+            }
+        )
+    }
 
     login(): void {
         let isLogged = this.userService.isValidUser(this.account.name, this.account.password)
         if (isLogged) {
-            this.route.navigate(['/home']);
+            this.isAdmin ? this.route.navigate(['/home-admin']) : this.route.navigate(['/home']);
         } else {
             this.showMessage = true;
         }

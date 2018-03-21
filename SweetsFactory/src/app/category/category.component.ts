@@ -8,6 +8,7 @@ import { Stock } from '../shared/model/stock';
 })
 export class CategoryComponent {
     stocks: Stock[];
+    header: string = "Categories";
 
     constructor(private categoryService: CategoryService) {
         this.stocks = categoryService.stock;

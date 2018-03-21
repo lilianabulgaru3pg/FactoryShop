@@ -19,8 +19,7 @@ export class NavComponent implements OnInit {
     userService.loginAnnounced$.subscribe(
       user => { this.isAdmin = user.isAdmin;
       this.updateMenu();
-      }
-    )
+      })
   }
 
   ngOnInit() {

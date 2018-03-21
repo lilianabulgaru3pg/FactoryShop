@@ -1,8 +1,8 @@
 <div class="grid-y navbar-grid ">
-    <div class="cell  small-1  align-center">
+    <div class="cell shrink">
         <h3 class="menu-title text-center">{{menuTitle | lowercase }}</h3>
     </div>
-    <ul class="cell shrink vertical menu main-meniu align-center " data-responsive-menu="drilldown medium-accordion">
+    <ul class="cell shrink vertical menu main-meniu align-center" data-responsive-menu="drilldown medium-accordion">
         <li *ngFor="let i of menuItems">
             <menu-item [path]='i.path' [pathName]='i.pathName'></menu-item>
         </li>

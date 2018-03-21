@@ -7,11 +7,12 @@ import { LoginComponent } from '../login/login.component';
 import { OrdersComponent } from '../orders/orders.component';
 import { CartComponent } from '../cart/cart.component';
 import { CategoryComponent } from '../category/category.component';
+import { HomeAdminComponent } from '../home-admin/home-admin.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            { path: '', redirectTo: '/home', pathMatch: 'full' },
+            { path: 'home-admin', component: HomeAdminComponent },
             { path: 'home', component: HomeComponent },
             { path: 'login', component: LoginComponent },
             { path: 'my-orders', component: OrdersComponent },
