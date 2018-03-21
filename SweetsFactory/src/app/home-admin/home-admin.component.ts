@@ -10,8 +10,13 @@ import { ProductService } from '../shared/services/product.service';
 })
 export class HomeAdminComponent {
     products: Product[];
+    header: string = "Products";
     constructor(private productService: ProductService) {
         this.products = this.productService.getProducts();
+    }
+
+    getStatus(product: Product): string {
+        return this.productService.productStatus(product);
     }
 }
 
