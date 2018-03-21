@@ -1,5 +1,5 @@
 <div class="item" (click)="toggleState()">
-    <img class="img-15 float-center" [src]="product.img" alt=""/>
+    <img class="img-15 float-center" [src]="imagePath" alt="">
     <div [@prodItemState]="state" class="state-div" [ngStyle]="{'position': state ==='active' ?
     'absolute' : 'relative'}">
         <p class="text-center text-item">{{product.name}}</p>

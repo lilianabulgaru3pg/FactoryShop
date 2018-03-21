@@ -17,7 +17,8 @@ export class UserService {
         this.users = this.getUsers();
     }
 
-    userLogedin(user: User) {
+    userLoggedIn(user: User) {
+        this.currentUser = user;
         this.loginAnnouncedSource.next(user);
     }
 
@@ -25,13 +26,25 @@ export class UserService {
         return USERS;
     }
 
+    isAdmin(): boolean {
+        return this.currentUser.isAdmin;
+    }
+
     isValidUser(userName: string, password: string): boolean {
+        this.isLogged = false;
         this.users.forEach(elem => {
             if (elem.name == userName && elem.password == password) {
-                this.userLogedin(elem);
-                return this.isLogged = true;
+                this.isLogged = true
+                this.userLoggedIn(elem);
+                return this.isLogged;
             }
         });
         return this.isLogged;
+    }
+
+    logout(){
+        this.isLogged = false;
+        this.currentUser = new User();
+        this.loginAnnouncedSource.next(this.currentUser);
     }
 }

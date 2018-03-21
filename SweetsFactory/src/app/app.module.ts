@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './start/app.component';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //services
 import { UserService } from './shared/services/user.service'
 
@@ -22,15 +22,19 @@ import { ProductItemComponent } from './shared/product/productItem.component';
 import { ProductService } from './shared/services/product.service';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './shared/services/category.service';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule 
     ],
     declarations: [
         AppComponent,
+        HeaderComponent,
         ProductItemComponent,
         SearchBarComponent,
         ShopCartComponent,
@@ -39,6 +43,7 @@ import { CategoryService } from './shared/services/category.service';
         TopBarComponent,
         NavComponent,
         HomeComponent,
+        HomeAdminComponent,
         LoginComponent,
         OrdersComponent,
         CartComponent,

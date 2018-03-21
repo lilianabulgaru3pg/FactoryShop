@@ -1,3 +1,7 @@
 .home-comp {
-    padding: 1.5rem;
+    margin: 1rem;
+}
+
+.product-item {
+    margin: 0;
 }

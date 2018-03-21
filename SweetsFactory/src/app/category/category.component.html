@@ -1,14 +1,19 @@
-<table class="hover">
-    <thead>
-        <tr>
-            <th width="150">Categories</th>
-            <th width="150">Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let stock of stocks">
-            <td >{{stock.categoryName}}</td>
-            <td>{{stock.stockNumber}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="grid-y grid-div">
+    <header-box [headerName]='header' class="cell small-1"></header-box>
+    <div class="cell small-11 table-div">
+        <table class="hover table-box">
+            <thead>
+                <tr>
+                    <th width="150">Categories</th>
+                    <th width="150">Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stock of stocks">
+                    <td>{{stock.categoryName}}</td>
+                    <td>{{stock.stockNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

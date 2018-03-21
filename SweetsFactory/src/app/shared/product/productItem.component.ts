@@ -37,6 +37,12 @@ export class ProductItemComponent {
     @Input() product: Product;
     state = 'inactive';
 
+    imagePath: string;
+
+    ngOnInit() {
+        this.imagePath = require(`../images/${this.product.img}`);
+    }
+
     toggleState() {
         this.state = this.state === 'active' ? 'inactive' : 'active';
     }

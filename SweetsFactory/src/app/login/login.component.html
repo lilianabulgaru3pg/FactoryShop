@@ -1,10 +1,10 @@
 <div class="login-comp row small-up-1 ">
     <div class="column">
         <label>Name:
-            <input [(ngModel)]="account.name" placeholder="name" />
+            <input [(ngModel)]="account.name" type="text" placeholder="name" />
         </label>
         <label>Password:
-            <input [(ngModel)]="account.password" placeholder="password" />
+            <input [(ngModel)]="account.password" type="password" placeholder="password" />
         </label>
         <div *ngIf="showMessage" class="incorrect-message">
             <p>The User Name or Password is Incorrect!</p>
