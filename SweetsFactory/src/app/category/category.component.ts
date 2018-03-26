@@ -9,24 +9,31 @@ import { Category } from '../shared/model/category';
 })
 export class CategoryComponent implements OnInit {
     stocks: Stock[];
+    emptyCategoryName = false;
     categoryName: string;
     header: string = "Categories";
+    reveal: any;
     ngOnInit(): void {
-        $('.reveal').foundation();
+        // $('.reveal').foundation();
+        const options = { /* Options, if any */ };
+        this.reveal = new Foundation.Reveal($('.reveal'), options);
     }
 
     constructor(private categoryService: CategoryService) {
         this.stocks = categoryService.stock;
         categoryService.categoryAnnounced$.subscribe(
             newCategories => {
-                console.log("aicii", newCategories);
+                this.stocks = categoryService.stock;
             }
         )
     }
 
     saveNewCategory() {
-        if (this.categoryName) {
+        if (this.categoryName !== undefined && this.categoryName !== ' ') {
             this.categoryService.saveCategory(this.categoryName);
+            this.reveal.close();
+        } else {
+            this.emptyCategoryName = true;
         }
     }
 }
