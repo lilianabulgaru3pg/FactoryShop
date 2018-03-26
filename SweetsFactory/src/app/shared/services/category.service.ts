@@ -4,25 +4,34 @@ import { CATEGORY } from '../../mock-products';
 import { ProductService } from './product.service';
 import { Product } from '../model/product';
 import { Stock } from '../model/stock';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class CategoryService {
     categories: Category[];
     products: Product[];
     stock: Stock[] = new Array<Stock>();
+    private categoryAnnouncedSource = new Subject<Stock[]>();
+    categoryAnnounced$ = this.categoryAnnouncedSource.asObservable();
 
     constructor(private productService: ProductService) {
         this.products = this.productService.getProducts();
-        this.categories = this.getCategories();
+        this.categories = CATEGORY;
         this.getCategoriesStock();
     }
 
-    getCategories() {
-        return CATEGORY;
+    saveCategory(newCategoryName: string) {
+        let newCategory = new Category();
+        newCategory.name = newCategoryName;
+        newCategory.id = Math.floor(Math.random());
+        this.categories.push(newCategory);
+        let newCategoryStock = new Stock(newCategoryName, 0);
+        this.stock.push(newCategoryStock);
+        this.categoryAnnouncedSource.next(this.stock);
     }
 
-    getCategoryName(id: number) {
-
+    getCategories(): Category[] {
+        return this.categories;
     }
 
     getCategoriesStock() {

@@ -2,7 +2,23 @@
     <header-box [headerName]='header' class="cell small-1"></header-box>
     <div class="cell small-11 table-div">
         <div class="top-header">
-            <button (click)="newCategory()" class="hollow button new-category-btn">New Category</button>
+            <a data-open="categoryModal1" class="new-category-link">Add a new category</a>
+            <div class="reveal tiny category-modal" id="categoryModal1" data-reveal>
+                <h5>Add category</h5>
+                <label>Category Name:
+                    <input [(ngModel)]="categoryName" type="text" placeholder="" />
+                </label>
+                <div *ngIf="wrongCategoryName" class="incorrect-message">
+                    <p>Category name already exists!</p>
+                </div>
+                <div class="button-group float-right">
+                    <button class="secondary button close-btn" data-close type="button">Close</button>
+                    <button class="success button save-category-btn float-right" type="button" (click)="saveNewCategory()">Save</button>
+                </div>
+                <button class="close-button" data-close type="button">
+                    &times;
+                </button>
+            </div>
         </div>
         <table class="hover table-box">
             <thead>
