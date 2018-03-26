@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SharingService {
     categoryStorageName: string = "categoryData";
+    userStorageName: string = "userData";
 
     constructor() { }
 
@@ -24,6 +25,26 @@ export class SharingService {
 
     clearCategoryData() {
         localStorage.removeItem(this.categoryStorageName);
+    }
+
+    setUserData(data: any) {
+        localStorage.setItem(this.userStorageName, JSON.stringify(data));
+    }
+
+    getUserData() {
+        let data = localStorage.getItem(this.userStorageName);
+        return JSON.parse(data);
+    }
+
+    hasUserData(): boolean {
+        if (localStorage.getItem(this.userStorageName) !== null) {
+            return true;
+        }
+        return false;
+    }
+
+    clearUserData() {
+        localStorage.removeItem(this.userStorageName);
     }
 
     cleanAll() {

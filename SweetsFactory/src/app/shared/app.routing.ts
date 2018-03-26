@@ -12,6 +12,7 @@ import { HomeAdminComponent } from '../home-admin/home-admin.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home-admin', component: HomeAdminComponent },
             { path: 'home', component: HomeComponent },
             { path: 'login', component: LoginComponent },

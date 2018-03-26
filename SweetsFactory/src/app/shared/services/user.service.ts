@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Subject } from 'rxjs';
+import { SharingService } from './sharing.service';
 
 @Injectable()
 export class UserService {
@@ -13,12 +14,19 @@ export class UserService {
     private loginAnnouncedSource = new Subject<User>();
     loginAnnounced$ = this.loginAnnouncedSource.asObservable();
 
-    constructor() {
+    constructor(public sharingService: SharingService) {
         this.users = this.getUsers();
+        let storedData = this.sharingService.hasUserData();
+        if (storedData) {
+            this.currentUser = this.sharingService.getUserData();
+            this.isLogged = true;
+            this.loginAnnouncedSource.next(this.currentUser);
+        }
     }
 
     userLoggedIn(user: User) {
         this.currentUser = user;
+        this.sharingService.setUserData(this.currentUser);
         this.loginAnnouncedSource.next(user);
     }
 
@@ -42,9 +50,10 @@ export class UserService {
         return this.isLogged;
     }
 
-    logout(){
+    logout() {
         this.isLogged = false;
         this.currentUser = new User();
         this.loginAnnouncedSource.next(this.currentUser);
+        this.sharingService.clearUserData();
     }
 }
