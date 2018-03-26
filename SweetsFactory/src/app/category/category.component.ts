@@ -13,10 +13,10 @@ export class CategoryComponent implements OnInit {
     categoryName: string;
     header: string = "Categories";
     reveal: any;
+
     ngOnInit(): void {
-        // $('.reveal').foundation();
-        const options = { /* Options, if any */ };
-        this.reveal = new Foundation.Reveal($('.reveal'), options);
+        this.reveal = $('.reveal');
+        this.reveal.foundation();
     }
 
     constructor(private categoryService: CategoryService) {
@@ -31,10 +31,15 @@ export class CategoryComponent implements OnInit {
     saveNewCategory() {
         if (this.categoryName !== undefined && this.categoryName !== ' ') {
             this.categoryService.saveCategory(this.categoryName);
-            this.reveal.close();
+            this.reveal.foundation('close');
+            this.categoryName = '';
         } else {
             this.emptyCategoryName = true;
         }
+    }
+
+    close() {
+        this.categoryName = '';
     }
 }
 
