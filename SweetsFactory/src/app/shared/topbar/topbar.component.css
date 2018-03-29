@@ -4,7 +4,7 @@ ul {
     color: transparent;
 }
 .top-bar {
-    height: 4rem;
+    min-height: 4rem;
     border-bottom: 0.05rem solid lightgray;
 }
 
