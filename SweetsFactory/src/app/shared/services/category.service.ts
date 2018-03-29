@@ -58,4 +58,14 @@ export class CategoryService {
         });
         return no;
     }
+
+    getCategoryName(categoryId: number): string {
+        var categoryName = 'test';
+        this.categories.forEach(elem => {
+            if (categoryId === elem.id) {
+                categoryName = elem.name;
+            }
+        });
+        return categoryName;
+    }
 }

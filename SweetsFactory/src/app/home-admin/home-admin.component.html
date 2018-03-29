@@ -15,7 +15,7 @@
             <tbody>
                 <tr *ngFor="let product of products">
                     <td>{{product.name}}</td>
-                    <td>{{product.category}}</td>
+                    <td>{{getCategoryName(product)}}</td>
                     <td>{{product.price}}</td>
                     <td>{{product.stock}}</td>
                     <td>{{getStatus(product)}}</td>

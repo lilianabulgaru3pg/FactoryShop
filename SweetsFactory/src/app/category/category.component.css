@@ -11,8 +11,8 @@
 }
 
 thead th {
-    height: 4rem;
-    background-color: rgb(248, 247, 247);
+    height: 3rem;
+    background-color: white;
 }
 
 table tr:nth-child(odd) td{
