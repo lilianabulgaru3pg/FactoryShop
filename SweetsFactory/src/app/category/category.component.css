@@ -56,6 +56,7 @@ input {
     display: inline-block;
     width: 12rem;
     margin-left: 1rem;
+    margin-bottom: 1%;
 }
 
 .incorrect-category-name {
