@@ -5,10 +5,13 @@
 
 .button {
     border: none;
+    margin-bottom: 0;
 }
 
 .logout-box {
-    width: 6rem;
+    width: auto;
+    height: auto;
+    margin: auto;
 }
 
 .logout-btn {

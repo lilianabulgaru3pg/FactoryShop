@@ -23,15 +23,17 @@ export class AccountComponent implements OnInit {
     }
     ngOnInit() {
         this.isLogged = this.userService.isLogged;
-        this.updateAccount(this.userService.currentUser);
+        let options = { /* Reveal Options, if any */ };
+        let $logoutElement = $('.logout-box');
+        this.logoutBox = new Foundation.Dropdown($logoutElement, options);
+        if (this.isLogged) {
+            this.updateAccount(this.userService.currentUser);
+        }
     }
 
     updateAccount(newUser: User) {
         if (newUser.id) {
             this.accountName = newUser.name;
-            const options = { /* Reveal Options, if any */ };
-            const $logoutElement = $('.logout-box');
-            this.logoutBox = new Foundation.Dropdown($logoutElement, options);
         } else {
             this.accountName = "Account";
         }
@@ -41,5 +43,11 @@ export class AccountComponent implements OnInit {
         this.userService.logout();
         this.logoutBox.close();
         this.route.navigate(['/login']);
+    }
+
+    login() {
+        if (this.isLogged) {
+            this.logoutBox.open();
+        }
     }
 }
