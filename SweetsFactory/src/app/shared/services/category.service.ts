@@ -4,25 +4,42 @@ import { CATEGORY } from '../../mock-products';
 import { ProductService } from './product.service';
 import { Product } from '../model/product';
 import { Stock } from '../model/stock';
+import { Subject } from 'rxjs';
+import { SharingService } from './sharing.service';
 
 @Injectable()
 export class CategoryService {
     categories: Category[];
     products: Product[];
     stock: Stock[] = new Array<Stock>();
+    private categoryAnnouncedSource = new Subject<Stock[]>();
+    categoryAnnounced$ = this.categoryAnnouncedSource.asObservable();
 
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService, private sharingService: SharingService) {
         this.products = this.productService.getProducts();
-        this.categories = this.getCategories();
+        let storedData = this.sharingService.hasCategoryData();
+        if (storedData) {
+            this.categories = this.sharingService.getCategoryData();
+        } else {
+            this.categories = CATEGORY;
+        }
         this.getCategoriesStock();
     }
 
-    getCategories() {
-        return CATEGORY;
+    saveCategory(newCategoryName: string) {
+        let newCategory = new Category();
+        newCategory.name = newCategoryName;
+        newCategory.id = Math.floor(Math.random() * 100) + 4;
+        this.categories.push(newCategory);
+        this.sharingService.setCategoryData(this.categories);
+
+        let newCategoryStock = new Stock(newCategoryName, 0);
+        this.stock.push(newCategoryStock);
+        this.categoryAnnouncedSource.next(this.stock);
     }
 
-    getCategoryName(id: number) {
-
+    getCategories(): Category[] {
+        return this.categories;
     }
 
     getCategoriesStock() {
@@ -40,5 +57,15 @@ export class CategoryService {
             }
         });
         return no;
+    }
+
+    getCategoryName(categoryId: number): string {
+        var categoryName = 'test';
+        this.categories.forEach(elem => {
+            if (categoryId === elem.id) {
+                categoryName = elem.name;
+            }
+        });
+        return categoryName;
     }
 }

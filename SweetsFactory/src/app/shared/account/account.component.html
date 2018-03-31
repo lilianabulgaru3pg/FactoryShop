@@ -1,8 +1,8 @@
 <div>
-    <button class="clear button" type="button" data-toggle="loggout-dropdown">
+    <button class="clear button" type="button" data-toggle="loggout-dropdown" (click)="login()">
         <a [ngClass]="{'disable-click': isLogged}" routerLink="/login" routerLinkActive="active">{{accountName}}</a>
     </button>
-    <div [ngClass]="{'hide': !isLogged}" class="dropdown-pane logout-box" id="loggout-dropdown" data-dropdown data-position="bottom"
+    <div class="dropdown-pane logout-box" id="loggout-dropdown" [ngClass]="{'hide': !isLogged}" data-dropdown data-position="bottom"
         data-alignment="right" data-auto-focus="true">
         <div class="row">
             <div class="columns ">

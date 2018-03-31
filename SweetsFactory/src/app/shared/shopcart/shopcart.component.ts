@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
     styles: [`
         .button {
             border: none;
+            margin: 0;
         }`]
 })
 

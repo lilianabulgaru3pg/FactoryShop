@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/model/user';
 import { Router } from '@angular/router';
@@ -7,23 +7,28 @@ import { Router } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     showMessage = false;
-    isAdmin = false;
-
+    isAdmin: boolean = false;
     account = {
         name: '',
         password: ''
     }
     constructor(private userService: UserService, private route: Router) {
-        userService.loginAnnounced$.subscribe(
+        this.userService.loginAnnounced$.subscribe(
             user => {
                 this.isAdmin = user.isAdmin;
             }
         )
     }
 
-    login(): void {
+    ngOnInit() {
+        if (this.userService.isLogged) {
+            this.isAdmin = this.userService.currentUser.isAdmin;
+        }
+    }
+
+    login() {
         let isLogged = this.userService.isValidUser(this.account.name, this.account.password)
         if (isLogged) {
             this.isAdmin ? this.route.navigate(['/home-admin']) : this.route.navigate(['/home']);

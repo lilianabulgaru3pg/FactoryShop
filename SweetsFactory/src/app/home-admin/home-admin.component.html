@@ -1,0 +1,27 @@
+<div class="grid-y grid-div">
+    <header-box [headerName]='header' class="cell small-1 top-header"></header-box>
+    <div class="cell small-10 table-div">
+        <div class="table-top-header"></div>
+        <table class="hover table-box">
+            <thead>
+                <tr>
+                    <th width="150">Name</th>
+                    <th width="150">Category</th>
+                    <th width="150">Price</th>
+                    <th width="150">Stock</th>
+                    <th width="150">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.name}}</td>
+                    <td>{{getCategoryName(product)}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.stock}}</td>
+                    <td>{{getStatus(product)}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer"></div>
+    </div>
+</div>

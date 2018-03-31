@@ -10,6 +10,10 @@ export class ProductService {
         this.products = this.getProducts();
     }
 
+    productStatus(product: Product): string {
+        return product.stock != 0 ? 'available' : 'out of stock'
+    }
+
     getProducts() {
         return PRODUCTS;
     }

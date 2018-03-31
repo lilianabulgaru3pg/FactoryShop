@@ -11,29 +11,29 @@ import { BUYER, ADMIN } from '../mock-users';
 })
 
 export class NavComponent implements OnInit {
-  menuTitle = 'Factory.'; //TODO: trebuie scos intr-un fisier
+  menuTitle = 'factory.';
   menuItems: MenuItem[] = BUYER;
-  isAdmin = false;
 
   constructor(public userService: UserService) {
-    userService.loginAnnounced$.subscribe(
-      user => { this.isAdmin = user.isAdmin;
-      this.updateMenu();
+    this.userService.loginAnnounced$.subscribe(
+      user => {
+        this.updateMenu();
       })
   }
 
   ngOnInit() {
-    const options = { /* Reveal Options, if any */ };
-    const $menuElement = $('.main-meniu');
-    var elem = new Foundation.AccordionMenu($menuElement, options);
+    $(document).foundation();
+    // const options = { /* Reveal Options, if any */ };
+    // const $menuElement = $('.main-meniu');
+    // var elem = new Foundation.AccordionMenu($menuElement, options);
     this.updateMenu();
   }
 
   updateMenu() {
-    if (!this.isAdmin) {
-        this.menuItems = BUYER;
-    } else {
+    if (this.userService.isAdmin && this.userService.isLogged) {
       this.menuItems = ADMIN;
+    } else {
+      this.menuItems = BUYER;
     }
   }
 }
