@@ -17,4 +17,14 @@ export class ProductService {
     getProducts() {
         return PRODUCTS;
     }
+
+    getProductsForCategory(categoryId: number): Array<Product> {
+        var products = new Array<Product>();
+        this.products.forEach(product => {
+            if (categoryId === product.category){
+                products.push(product);
+            }
+        });
+        return products;
+    }
 }

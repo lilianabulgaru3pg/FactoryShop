@@ -1,16 +1,16 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CategoryService } from '../shared/services/category.service';
 import { Stock } from '../shared/model/stock';
-import { Category } from '../shared/model/category';
+import { Category, CategoryType } from '../shared/model/category';
 
 @Component({
     templateUrl: './category.component.html',
     styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-    stocks: Stock[];
     emptyCategoryName: boolean = false;
-    categoryName: string;
+    categoryTypes: Array<CategoryType>;
+    newCategoryName: string;
     header: string = "Categories";
     @ViewChild('reveal') reveal: ElementRef;
 
@@ -18,24 +18,22 @@ export class CategoryComponent implements OnInit {
         let options = { /* Reveal Options, if any */ };
         let $revealElement = $(this.reveal.nativeElement);
         var elem = new Foundation.Reveal($revealElement, options);
-
-        console.log(this.categoryName);
     }
 
-    constructor(private categoryService: CategoryService, myElement: ElementRef) {
-        this.stocks = categoryService.stock;
+    constructor(public categoryService: CategoryService, myElement: ElementRef) {
+        this.categoryTypes = this.categoryService.categoryTypes;
         categoryService.categoryAnnounced$.subscribe(
             newCategories => {
-                this.stocks = categoryService.stock;
+                this.categoryTypes = this.categoryService.categoryTypes;
             }
         )
     }
 
     saveNewCategory() {
-        if (this.categoryName !== undefined && this.categoryName !== '') {
-            this.categoryService.saveCategory(this.categoryName);
+        if (this.newCategoryName !== undefined && this.newCategoryName !== '') {
+            this.categoryService.saveCategory(this.newCategoryName);
             $(this.reveal.nativeElement).foundation('close');
-            this.categoryName = '';
+            this.newCategoryName = '';
             this.emptyCategoryName = false;
         } else {
             this.emptyCategoryName = true;
@@ -43,7 +41,7 @@ export class CategoryComponent implements OnInit {
     }
 
     close() {
-        this.categoryName = '';
+        this.newCategoryName = '';
         this.emptyCategoryName = false;
     }
 }
