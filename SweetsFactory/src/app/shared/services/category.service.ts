@@ -30,12 +30,16 @@ export class CategoryService {
     saveCategory(newCategoryName: string) {
         let newCategory = new Category();
         newCategory.name = newCategoryName;
-        newCategory.id = Math.floor(Math.random() * 100) + 4;
+        let newId = Math.floor(Math.random() * 100) + 4;
+        newCategory.id = newId
         this.categories.push(newCategory);
         this.sharingService.setCategoryData(this.categories);
 
-        // let newCategoryStock = new Stock(newCategoryName, 0);
-        // this.stock.push(newCategoryStock);
+        let newCategoryType = new CategoryType();
+        newCategoryType.name = newCategoryName;
+        newCategoryType.categoryId = newId;
+        newCategoryType.products = new Array<Product>();
+        this.categoryTypes.push(newCategoryType);
         this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 

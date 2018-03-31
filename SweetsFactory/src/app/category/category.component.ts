@@ -12,18 +12,20 @@ export class CategoryComponent implements OnInit {
     categoryTypes: Array<CategoryType>;
     newCategoryName: string;
     header: string = "Categories";
-    @ViewChild('reveal') reveal: ElementRef;
+    @ViewChild('reveal') newCategoryReveal: ElementRef;
+    @ViewChild('editReveal') editCategoryReveal: ElementRef;
 
     ngOnInit(): void {
         let options = { /* Reveal Options, if any */ };
-        let $revealElement = $(this.reveal.nativeElement);
+        let $revealElement = $(this.newCategoryReveal.nativeElement);
         var elem = new Foundation.Reveal($revealElement, options);
     }
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) {
         this.categoryTypes = this.categoryService.categoryTypes;
-        categoryService.categoryAnnounced$.subscribe(
+        this.categoryService.categoryAnnounced$.subscribe(
             newCategories => {
+                console.log('aici3');
                 this.categoryTypes = this.categoryService.categoryTypes;
             }
         )
@@ -32,10 +34,12 @@ export class CategoryComponent implements OnInit {
     saveNewCategory() {
         if (this.newCategoryName !== undefined && this.newCategoryName !== '') {
             this.categoryService.saveCategory(this.newCategoryName);
-            $(this.reveal.nativeElement).foundation('close');
+            $(this.newCategoryReveal.nativeElement).foundation('close');
             this.newCategoryName = '';
             this.emptyCategoryName = false;
+            console.log('aici2');
         } else {
+            console.log('aici');
             this.emptyCategoryName = true;
         }
     }

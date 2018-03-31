@@ -24,17 +24,19 @@ import { CategoryService } from './shared/services/category.service';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharingService } from './shared/services/sharing.service';
+import { EditComponent } from './shared/edit/edit.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        BrowserAnimationsModule 
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
         HeaderComponent,
+        EditComponent,
         ProductItemComponent,
         SearchBarComponent,
         ShopCartComponent,

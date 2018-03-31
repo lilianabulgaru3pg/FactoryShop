@@ -6,7 +6,7 @@
             <div class="reveal tiny category-modal" id="categoryModal" data-reveal #reveal>
                 <h5>Add category</h5>
                 <label>Category Name:
-                    <input [(ngModel)]="categoryName" type="text" placeholder="" />
+                    <input [(ngModel)]="newCategoryName" type="text" placeholder="" />
                 </label>
                 <div [ngClass]="{'invisible': !emptyCategoryName}" class="incorrect-category-name text-center">
                     <p>Category name is empty!</p>
@@ -24,13 +24,15 @@
             <thead>
                 <tr>
                     <th width="150">Categories</th>
-                    <th width="150">Number of Categories</th>
+                    <th width="150">No of Categories</th>
+                    <th width="150"> </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let category of categoryTypes">
                     <td>{{category.name}}</td>
                     <td>{{category.products?.length}}</td>
+                    <td><edit></edit></td>
                 </tr>
             </tbody>
         </table>
