@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
     @ViewChild('reveal') newCategoryReveal: ElementRef;
 
     ngOnInit(): void {
-        let options = { /* Reveal Options, if any */ };
+        let options = { resetOnClose: true };
         let $newCategoryElement = $(this.newCategoryReveal.nativeElement);
         var newCategoryModal = new Foundation.Reveal($newCategoryElement, options);
     }
@@ -24,7 +24,6 @@ export class CategoryComponent implements OnInit {
         this.categoryTypes = this.categoryService.categoryTypes;
         this.categoryService.categoryAnnounced$.subscribe(
             newCategories => {
-                console.log('aici3');
                 this.categoryTypes = this.categoryService.categoryTypes;
             }
         )
@@ -36,9 +35,7 @@ export class CategoryComponent implements OnInit {
             $(this.newCategoryReveal.nativeElement).foundation('close');
             this.newCategoryName = '';
             this.emptyCategoryName = false;
-            console.log('aici2');
         } else {
-            console.log('aici');
             this.emptyCategoryName = true;
         }
     }
