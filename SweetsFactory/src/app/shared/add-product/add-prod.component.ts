@@ -11,7 +11,7 @@ import { Category, CategoryType } from '../model/category';
 
 export class AddProductComponent implements OnInit {
     @ViewChild('addProductReveal') addProductReveal: ElementRef;
-    newProduct: string;
+    newProduct: Product = new Product();
     addProductModal: FoundationSites.Reveal;
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) { }

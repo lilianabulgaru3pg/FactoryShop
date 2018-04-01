@@ -5,6 +5,25 @@
     top: 25%; 
 }
 
-a, .reveal{
-    outline-width: 0;
+.button-group .button {
+    margin-right: 5px;
+}
+
+.new-product-modal h5 {
+    padding-bottom: 1rem;
+    border-bottom: solid 1px rgba(128, 128, 128, 0.404);
+    border-radius: 0;
+}
+
+input {
+    width: 60%;
+}
+
+input, label {
+    margin-left: 2%;
+}
+
+.incorrect-category-name {
+    color: red;
+    font-size: 14px;
 }
