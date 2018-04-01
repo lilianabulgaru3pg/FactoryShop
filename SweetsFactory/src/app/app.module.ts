@@ -24,7 +24,7 @@ import { CategoryService } from './shared/services/category.service';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharingService } from './shared/services/sharing.service';
-import { EditComponent } from './shared/edit/edit.component';
+import { EditComponent } from './shared/edit-category/edit.component';
 
 @NgModule({
     imports: [
