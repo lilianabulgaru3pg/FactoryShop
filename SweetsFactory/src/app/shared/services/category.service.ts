@@ -87,4 +87,17 @@ export class CategoryService {
         });
     }
 
+    editCategory(categoryId: number, newCategoryName: string) {
+        this.categories.forEach(category => {
+            if (categoryId === category.id) {
+                category.name = newCategoryName;
+            }
+        });
+        this.categoryTypes.forEach(categoryType => {
+            if (categoryId === categoryType.categoryId) {
+                categoryType.name = newCategoryName;
+            }
+        });
+        this.categoryAnnouncedSource.next(this.categoryTypes);
+    }
 }

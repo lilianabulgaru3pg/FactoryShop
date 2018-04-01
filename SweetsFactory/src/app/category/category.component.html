@@ -32,7 +32,7 @@
                 <tr *ngFor="let category of categoryTypes">
                     <td>{{category.name}}</td>
                     <td>{{category.products?.length}}</td>
-                    <td><edit></edit></td>
+                    <td><edit [categoryModel] = "category"></edit></td>
                 </tr>
             </tbody>
         </table>

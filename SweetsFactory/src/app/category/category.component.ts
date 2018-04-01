@@ -13,12 +13,11 @@ export class CategoryComponent implements OnInit {
     newCategoryName: string;
     header: string = "Categories";
     @ViewChild('reveal') newCategoryReveal: ElementRef;
-    @ViewChild('editReveal') editCategoryReveal: ElementRef;
 
     ngOnInit(): void {
         let options = { /* Reveal Options, if any */ };
-        let $revealElement = $(this.newCategoryReveal.nativeElement);
-        var elem = new Foundation.Reveal($revealElement, options);
+        let $newCategoryElement = $(this.newCategoryReveal.nativeElement);
+        var newCategoryModal = new Foundation.Reveal($newCategoryElement, options);
     }
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) {

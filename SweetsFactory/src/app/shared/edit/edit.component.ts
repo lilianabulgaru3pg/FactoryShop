@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, Input } from '@angular/core';
+import { CategoryService } from '../services/category.service';
+import { Product } from '../model/product';
+import { Category, CategoryType } from '../model/category';
 
 @Component({
   selector: 'edit',
@@ -6,6 +9,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit.component.css'],
 })
 
-export class EditComponent {
-  constructor() { }
+export class EditComponent implements OnInit {
+  @ViewChild('editReveal') editCategoryReveal: ElementRef;
+  editCategoryName: string;
+  @Input() categoryModel: CategoryType;
+  editCategoryModall: FoundationSites.Reveal;
+
+  constructor(public categoryService: CategoryService, myElement: ElementRef) { }
+
+  ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: any) {
+    console.log(changes);
+  }
+
+  saveEditedCategory() {
+    this.categoryService.editCategory(this.categoryModel.categoryId, this.editCategoryName);
+    this.editCategoryModall.close();
+  }
+
+  openModal() {
+    let options = {};
+    let $editCategoryElement = $(this.editCategoryReveal.nativeElement);
+    var editCategoryModal = new Foundation.Reveal($editCategoryElement, options);
+    this.editCategoryModall = editCategoryModal;
+    this.editCategoryName = this.categoryModel.name;
+    editCategoryModal.open();
+  }
+  close() { }
 }
