@@ -8,16 +8,16 @@ import { Category, CategoryType } from '../shared/model/category';
     styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-    emptyCategoryName: boolean = false;
     categoryTypes: Array<CategoryType>;
     newCategoryName: string;
     header: string = "Categories";
-    @ViewChild('reveal') newCategoryReveal: ElementRef;
+    newCategoryModal: FoundationSites.Reveal;
+    @ViewChild('newCategoryReveal') newCategoryReveal: ElementRef;
 
     ngOnInit(): void {
-        let options = { resetOnClose: true };
+        let options = {};
         let $newCategoryElement = $(this.newCategoryReveal.nativeElement);
-        var newCategoryModal = new Foundation.Reveal($newCategoryElement, options);
+        this.newCategoryModal = new Foundation.Reveal($newCategoryElement, options);
     }
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) {
@@ -28,21 +28,20 @@ export class CategoryComponent implements OnInit {
             }
         )
     }
+    openNewCategoryModal() {
+        this.newCategoryModal.open();
+    }
 
     saveNewCategory() {
-        if (this.newCategoryName !== undefined && this.newCategoryName !== '') {
-            this.categoryService.saveCategory(this.newCategoryName);
-            $(this.newCategoryReveal.nativeElement).foundation('close');
-            this.newCategoryName = '';
-            this.emptyCategoryName = false;
-        } else {
-            this.emptyCategoryName = true;
-        }
+        this.categoryService.saveCategory(this.newCategoryName);
+        this.newCategoryModal.close();
+        this.newCategoryName = '';
     }
 
     close() {
+        console.log('aicii4');
         this.newCategoryName = '';
-        this.emptyCategoryName = false;
+        this.newCategoryModal.close();
     }
 }
 

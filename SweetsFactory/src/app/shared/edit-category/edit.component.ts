@@ -13,12 +13,11 @@ export class EditComponent implements OnInit {
   @ViewChild('editReveal') editCategoryReveal: ElementRef;
   editCategoryName: string;
   @Input() categoryModel: CategoryType;
-  editCategoryModall: FoundationSites.Reveal;
+  editCategoryModal: FoundationSites.Reveal;
 
   constructor(public categoryService: CategoryService, myElement: ElementRef) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: any) {
     console.log(changes);
@@ -26,16 +25,17 @@ export class EditComponent implements OnInit {
 
   saveEditedCategory() {
     this.categoryService.editCategory(this.categoryModel.categoryId, this.editCategoryName);
-    this.editCategoryModall.close();
+    this.editCategoryModal.close();
   }
 
   openModal() {
     let options = {};
     let $editCategoryElement = $(this.editCategoryReveal.nativeElement);
-    var editCategoryModal = new Foundation.Reveal($editCategoryElement, options);
-    this.editCategoryModall = editCategoryModal;
+    this.editCategoryModal = new Foundation.Reveal($editCategoryElement, options);
     this.editCategoryName = this.categoryModel.name;
-    editCategoryModal.open();
+    this.editCategoryModal.open();
   }
-  close() { }
+  close() { 
+    this.editCategoryModal.close();
+  }
 }

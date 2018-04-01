@@ -2,18 +2,18 @@
     <header-box [headerName]='header' class="cell small-1"></header-box>
     <div class="cell small-11 table-div">
         <div class="top-header">
-            <a data-open="categoryModal" class="new-category-link">Add a new category</a>
-            <div class="reveal tiny category-modal" id="categoryModal" data-reveal #reveal>
+            <a data-open="newCategoryModal" class="new-category-link float-right" (click)="openNewCategoryModal()">Add a new category</a>
+            <div class="reveal small category-modal" id="newCategoryModal" data-reveal #newCategoryReveal>
                 <h5>Add category</h5>
                 <label>Category Name:
-                    <input [(ngModel)]="newCategoryName" type="text" placeholder="" />
+                    <input [(ngModel)]="newCategoryName" type="text" name="name" required minlength="1" #newCategory />
                 </label>
-                <div [ngClass]="{'invisible': !emptyCategoryName}" class="incorrect-category-name text-center">
+                <div [ngClass]="{'invisible':  !newCategory.valid }" class="incorrect-category-name text-center">
                     <p>Category name is empty!</p>
                 </div>
                 <div class="button-group float-right">
                     <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
-                    <button class="success button save-category-btn float-right" type="button" (click)="saveNewCategory()">Save</button>
+                    <button class="success button save-category-btn float-right" type="button" [disabled]="newCategory.valid" (click)="saveNewCategory()">Save</button>
                 </div>
                 <button class="close-button" data-close type="button" (click)="close()">
                     &times;
@@ -32,7 +32,9 @@
                 <tr *ngFor="let category of categoryTypes">
                     <td>{{category.name}}</td>
                     <td>{{category.products?.length}}</td>
-                    <td><edit [categoryModel] = "category"></edit></td>
+                    <td>
+                        <edit [categoryModel]="category"></edit>
+                    </td>
                 </tr>
             </tbody>
         </table>
