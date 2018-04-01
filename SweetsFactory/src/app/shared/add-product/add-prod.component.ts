@@ -13,20 +13,30 @@ export class AddProductComponent implements OnInit {
     @ViewChild('addProductReveal') addProductReveal: ElementRef;
     newProduct: Product = new Product();
     addProductModal: FoundationSites.Reveal;
+    categories: Category[];
 
-    constructor(public categoryService: CategoryService, myElement: ElementRef) { }
+    constructor(public categoryService: CategoryService, myElement: ElementRef) {
+        this.categories = this.categoryService.categories;
+        this.categoryService.categoryAnnounced$.subscribe(
+            newCategories => {
+                this.categories = this.categoryService.categories;
+            }
+        )
+    }
 
     ngOnInit(): void { }
 
     ngOnChanges(changes: any) {
-        console.log(changes);
     }
 
-    openModal() {
+    openNewCategoryModal() {
         let options = { resetOnClose: true };
         let $addProductElement = $(this.addProductReveal.nativeElement);
         this.addProductModal = new Foundation.Reveal($addProductElement, options);
         this.addProductModal.open();
     }
-    close() { }
+
+    close() { 
+        this.addProductModal.close();
+    }
 }
