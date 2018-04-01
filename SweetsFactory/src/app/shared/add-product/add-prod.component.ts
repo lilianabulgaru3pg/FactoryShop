@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit, Input } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Product } from '../model/product';
 import { Category, CategoryType } from '../model/category';
+import { IMAGES } from '../../mock-products';
 
 @Component({
     selector: 'add-prod',
@@ -14,6 +15,7 @@ export class AddProductComponent implements OnInit {
     newProduct: Product = new Product();
     addProductModal: FoundationSites.Reveal;
     categories: Category[];
+    images = IMAGES;
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) {
         this.categories = this.categoryService.categories;
@@ -24,15 +26,16 @@ export class AddProductComponent implements OnInit {
         )
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+        let options = { };
+        let $addProductElement = $(this.addProductReveal.nativeElement);
+        this.addProductModal = new Foundation.Reveal($addProductElement, options);
+    }
 
     ngOnChanges(changes: any) {
     }
 
     openNewCategoryModal() {
-        let options = { resetOnClose: true };
-        let $addProductElement = $(this.addProductReveal.nativeElement);
-        this.addProductModal = new Foundation.Reveal($addProductElement, options);
         this.addProductModal.open();
     }
 

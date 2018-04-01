@@ -15,8 +15,12 @@
         <select [(ngModel)]="newProduct.category" name="category" required>
             <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
         </select>
+        <label>Image:</label>
+        <select [(ngModel)]="newProduct.img" name="image" required>
+            <option *ngFor="let img of images" [value]="img">{{img}}</option>
+        </select>
         <div [ngClass]="{'invisible':  !addProductForm.form.valid}" class="incorrect-product-name text-center">
-            <p>Completed Product fields are incorrect!</p>
+            <p> Product fields are incorrect!</p>
         </div>
         <div class="button-group float-right">
             <button class="secondary button close-btn" data-close type="button" (click)="close(); addProductForm.reset()">Close</button>
