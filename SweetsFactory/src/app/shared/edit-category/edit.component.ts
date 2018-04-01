@@ -35,5 +35,7 @@ export class EditComponent implements OnInit {
     this.editCategoryName = this.categoryModel.name;
     this.editCategoryModal.open();
   }
-  close() { }
+  close() { 
+    this.editCategoryModal.close();
+  }
 }
