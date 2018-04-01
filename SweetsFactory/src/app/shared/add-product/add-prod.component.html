@@ -1,0 +1,19 @@
+<a data-open="productNewModal" class="new-product-link float-right" (click)="openModal()">Add a New Product</a>
+<div class="reveal tiny new-product-modal" id="productNewModal" data-reveal #addProductReveal>
+    <h5>Add Product</h5>
+    <form #addProductForm="ngForm">
+        <!-- <!-- <label>Product Name:
+            <input [(ngModel)]="newProduct.name" type="text" name="name" required minlength="1" #productName="ngModel" />
+        </label> -->
+        <!-- <div [ngClass]="{'invisible':  productName.valid}" class="incorrect-product-name text-center">
+            <p>Product name is empty!</p>
+        </div> -->
+        <div class="button-group float-right">
+            <button class="secondary button close-btn" data-close type="button" (click)="close(); addProductForm.reset()">Close</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveEditedCategory(); addProductForm.reset()">Save</button>
+        </div>
+        <button class="close-button" data-close type="button" (click)="close(); addProductForm.reset()">
+            &times;
+        </button> -->
+    </form>
+</div>

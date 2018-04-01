@@ -25,6 +25,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharingService } from './shared/services/sharing.service';
 import { EditComponent } from './shared/edit-category/edit.component';
+import { AddProductComponent } from './shared/add-product/add-prod.component';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { EditComponent } from './shared/edit-category/edit.component';
     ],
     declarations: [
         AppComponent,
+        AddProductComponent,
         HeaderComponent,
         EditComponent,
         ProductItemComponent,

@@ -1,0 +1,10 @@
+
+.new-product-link {
+    position: relative;
+    right: 4%;
+    top: 25%; 
+}
+
+a, .reveal{
+    outline-width: 0;
+}
