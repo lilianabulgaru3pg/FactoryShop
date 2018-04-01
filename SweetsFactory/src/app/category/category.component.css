@@ -34,9 +34,9 @@ table tr:nth-child(even) td{
 }
 
 .new-category-link {
-    position: absolute;
-    right: 1.2rem;
-    top: 1rem;
+    position: relative;
+    right: 4%;
+    top: 25%; 
 }
 
 a, .reveal{
