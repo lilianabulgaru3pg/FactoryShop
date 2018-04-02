@@ -22,12 +22,11 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(document).foundation();
     this.updateMenu();
   }
 
   updateMenu() {
-    if (this.userService.isAdmin && this.userService.isLogged) {
+    if (this.userService.isAdmin() && this.userService.isLogged) {
       this.menuItems = ADMIN;
     } else {
       this.menuItems = BUYER;
