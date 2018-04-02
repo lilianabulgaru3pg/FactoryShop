@@ -34,11 +34,13 @@ table tr:nth-child(even) td{
 }
 
 .sort-btn {
+    display: inline;
     background-color: transparent;
     margin: 0;
+    padding: 0;
 }
 
 .sort-btn img {
-    width: 1rem;
+    width: 0.8rem;
     height: 1rem;
 }
