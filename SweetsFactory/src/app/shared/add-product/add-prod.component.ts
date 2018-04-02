@@ -3,6 +3,7 @@ import { CategoryService } from '../services/category.service';
 import { Product } from '../model/product';
 import { Category, CategoryType } from '../model/category';
 import { IMAGES } from '../../mock-products';
+import { ProductService } from '../services/product.service';
 
 @Component({
     selector: 'add-prod',
@@ -17,7 +18,7 @@ export class AddProductComponent implements OnInit {
     categories: Category[];
     images = IMAGES;
 
-    constructor(public categoryService: CategoryService, myElement: ElementRef) {
+    constructor(public productService: ProductService, public categoryService: CategoryService, myElement: ElementRef) {
         this.categories = this.categoryService.categories;
         this.categoryService.categoryAnnounced$.subscribe(
             newCategories => {
@@ -40,6 +41,12 @@ export class AddProductComponent implements OnInit {
     }
 
     close() { 
+        this.addProductModal.close();
+    }
+
+    saveNewProduct(){
+        this.newProduct.category = Number(this.newProduct.category);
+        this.productService.saveNewProduct(Object.assign({},this.newProduct));
         this.addProductModal.close();
     }
 }
