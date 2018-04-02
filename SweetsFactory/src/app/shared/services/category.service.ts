@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category } from '../model/category';
+import { Category, CategoryType } from '../model/category';
 import { CATEGORY } from '../../mock-products';
 import { ProductService } from './product.service';
 import { Product } from '../model/product';
@@ -11,8 +11,9 @@ import { SharingService } from './sharing.service';
 export class CategoryService {
     categories: Category[];
     products: Product[];
+    categoryTypes: CategoryType[] = new Array<CategoryType>();
     stock: Stock[] = new Array<Stock>();
-    private categoryAnnouncedSource = new Subject<Stock[]>();
+    private categoryAnnouncedSource = new Subject<CategoryType[]>();
     categoryAnnounced$ = this.categoryAnnouncedSource.asObservable();
 
     constructor(private productService: ProductService, private sharingService: SharingService) {
@@ -23,19 +24,23 @@ export class CategoryService {
         } else {
             this.categories = CATEGORY;
         }
-        this.getCategoriesStock();
+        this.getCategoryByType();
     }
 
     saveCategory(newCategoryName: string) {
         let newCategory = new Category();
         newCategory.name = newCategoryName;
-        newCategory.id = Math.floor(Math.random() * 100) + 4;
+        let newId = Math.floor(Math.random() * 100) + 4;
+        newCategory.id = newId
         this.categories.push(newCategory);
         this.sharingService.setCategoryData(this.categories);
 
-        let newCategoryStock = new Stock(newCategoryName, 0);
-        this.stock.push(newCategoryStock);
-        this.categoryAnnouncedSource.next(this.stock);
+        let newCategoryType = new CategoryType();
+        newCategoryType.name = newCategoryName;
+        newCategoryType.categoryId = newId;
+        newCategoryType.products = new Array<Product>();
+        this.categoryTypes.push(newCategoryType);
+        this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 
     getCategories(): Category[] {
@@ -60,12 +65,39 @@ export class CategoryService {
     }
 
     getCategoryName(categoryId: number): string {
-        var categoryName = 'test';
+        var categoryName = '';
         this.categories.forEach(elem => {
             if (categoryId === elem.id) {
                 categoryName = elem.name;
             }
         });
         return categoryName;
+    }
+
+    getCategoryByType() {
+        this.categories.forEach(elem => {
+            let products: Array<Product> = this.productService.getProductsForCategory(elem.id);
+            if (products) {
+                let categoryType = new CategoryType();
+                categoryType.name = elem.name;
+                categoryType.categoryId = elem.id;
+                categoryType.products = products;
+                this.categoryTypes.push(categoryType);
+            }
+        });
+    }
+
+    editCategory(categoryId: number, newCategoryName: string) {
+        this.categories.forEach(category => {
+            if (categoryId === category.id) {
+                category.name = newCategoryName;
+            }
+        });
+        this.categoryTypes.forEach(categoryType => {
+            if (categoryId === categoryType.categoryId) {
+                categoryType.name = newCategoryName;
+            }
+        });
+        this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 }

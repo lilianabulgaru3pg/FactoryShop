@@ -23,9 +23,6 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     $(document).foundation();
-    // const options = { /* Reveal Options, if any */ };
-    // const $menuElement = $('.main-meniu');
-    // var elem = new Foundation.AccordionMenu($menuElement, options);
     this.updateMenu();
   }
 
