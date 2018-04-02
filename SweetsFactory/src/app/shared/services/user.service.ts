@@ -34,7 +34,7 @@ export class UserService {
     }
 
     isAdmin(): boolean {
-        return this.currentUser.isAdmin;
+        return this.currentUser ? this.currentUser.isAdmin : false;
     }
 
     isValidUser(userName: string, password: string): boolean {
