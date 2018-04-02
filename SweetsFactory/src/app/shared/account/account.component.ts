@@ -15,13 +15,16 @@ export class AccountComponent implements OnInit {
     isLogged: boolean = false;
 
     constructor(public userService: UserService, private route: Router) {
-        userService.loginAnnounced$.subscribe(
+        this.userService.loginAnnounced$.subscribe(
             user => {
                 this.isLogged = this.userService.isLogged;
                 this.updateAccount(user);
             });
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.isLogged = this.userService.isLogged;
+        this.updateAccount(this.userService.currentUser);
+    }
 
     updateAccount(newUser: User) {
         if (newUser.id) {
