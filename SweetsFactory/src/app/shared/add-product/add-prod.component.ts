@@ -36,7 +36,7 @@ export class AddProductComponent implements OnInit {
     ngOnChanges(changes: any) {
     }
 
-    openNewCategoryModal() {
+    openNewProductModal() {
         this.addProductModal.open();
     }
 

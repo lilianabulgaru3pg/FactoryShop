@@ -19,9 +19,7 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: any) {
-    console.log(changes);
-  }
+  ngOnChanges(changes: any) {}
 
   saveEditedCategory() {
     this.categoryService.editCategory(this.categoryModel.categoryId, this.editCategoryName);
