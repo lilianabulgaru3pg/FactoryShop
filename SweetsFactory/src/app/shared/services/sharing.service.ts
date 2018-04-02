@@ -18,10 +18,7 @@ export class SharingService {
     }
 
     hasCategoryData(): boolean {
-        if (localStorage.getItem(this.categoryStorageName) !== null) {
-            return true;
-        }
-        return false;
+        return (localStorage.getItem(this.categoryStorageName) !== null);
     }
 
     clearCategoryData() {
@@ -38,10 +35,7 @@ export class SharingService {
     }
 
     hasUserData(): boolean {
-        if (localStorage.getItem(this.userStorageName) !== null) {
-            return true;
-        }
-        return false;
+        return (localStorage.getItem(this.userStorageName) !== null);
     }
 
     clearUserData() {
@@ -62,10 +56,7 @@ export class SharingService {
     }
 
     hasProductData(): boolean {
-        if (localStorage.getItem(this.productStorageName) !== null) {
-            return true;
-        }
-        return false;
+        return (localStorage.getItem(this.productStorageName) !== null);
     }
 
     clearProductData() {

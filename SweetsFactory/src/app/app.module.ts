@@ -24,7 +24,7 @@ import { CategoryService } from './shared/services/category.service';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharingService } from './shared/services/sharing.service';
-import { EditComponent } from './shared/edit-category/edit.component';
+import { EditCategoryComponent } from './shared/edit-category/edit.component';
 import { AddProductComponent } from './shared/add-product/add-prod.component';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { AddProductComponent } from './shared/add-product/add-prod.component';
         AppComponent,
         AddProductComponent,
         HeaderComponent,
-        EditComponent,
+        EditCategoryComponent,
         ProductItemComponent,
         SearchBarComponent,
         ShopCartComponent,
