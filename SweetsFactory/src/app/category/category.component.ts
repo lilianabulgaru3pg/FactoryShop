@@ -37,7 +37,7 @@ export class CategoryComponent implements OnInit {
         newCategory.name = this.newCategoryName;
         let newId = Math.floor(Math.random() * 100) + 4;
         newCategory.id = newId
-        this.categoryService.saveCategory(Object.assign({},newCategory));
+        this.categoryService.saveCategory(Object.assign({}, newCategory));
         this.newCategoryModal.close();
         this.newCategoryName = '';
     }

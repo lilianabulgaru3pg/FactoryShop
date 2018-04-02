@@ -26,6 +26,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SharingService } from './shared/services/sharing.service';
 import { EditCategoryComponent } from './shared/edit-category/edit.component';
 import { AddProductComponent } from './shared/add-product/add-prod.component';
+import { EditProductModalComponent } from './shared/edit-prod-modal/edit-prod-modal.component';
 
 @NgModule({
     imports: [
@@ -39,6 +40,7 @@ import { AddProductComponent } from './shared/add-product/add-prod.component';
         AddProductComponent,
         HeaderComponent,
         EditCategoryComponent,
+        EditProductModalComponent,
         ProductItemComponent,
         SearchBarComponent,
         ShopCartComponent,
