@@ -46,5 +46,9 @@ export class HomeAdminComponent implements OnInit {
         this.sortAsc = this.sortAsc === false ? true : false;
         this.sortAsc ? this.products.sort((n1, n2) => (n1.name > n2.name ? 1 : -1)) : this.products.reverse();
     }
+
+    openDeleteModal(product: Product){
+
+    }
 }
 

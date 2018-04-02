@@ -44,3 +44,8 @@ table tr:nth-child(even) td{
     width: 0.8rem;
     height: 1rem;
 }
+
+.delete-sign {
+    width: 1rem;
+    height: 1rem;
+}

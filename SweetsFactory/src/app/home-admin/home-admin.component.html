@@ -9,13 +9,14 @@
                 <tr>
                     <th width="150">Name
                         <button class="button sort-btn " (click)="sortAscDesc()">
-                            <img src="../shared/images/sort.png" class="float-center" alt="" > 
+                            <img src="../shared/images/sort.png" class="float-center" alt="">
                         </button>
                     </th>
                     <th width="150">Category</th>
                     <th width="100">Price</th>
                     <th width="100">Stock</th>
                     <th width="150">Status</th>
+                    <th width="50"></th>
                     <th width="50"></th>
                 </tr>
             </thead>
@@ -28,6 +29,11 @@
                     <td>{{getStatus(product)}}</td>
                     <td>
                         <a data-open="editProductModal" class="edit-product-link float-center" (click)="openModal(product)">edit</a>
+                    </td>
+                    <td>
+                        <a data-open="deleteProductModal" class="delete-product-link float-center" (click)="openDeleteModal(product)">
+                            <img src="../shared/images/delete-sign.png" class="delete-sign float-center" alt="">
+                        </a>
                     </td>
                 </tr>
             </tbody>
