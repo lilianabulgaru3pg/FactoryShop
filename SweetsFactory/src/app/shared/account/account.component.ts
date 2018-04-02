@@ -23,7 +23,7 @@ export class AccountComponent implements OnInit {
     }
     ngOnInit() {
         this.isLogged = this.userService.isLogged;
-        let options = { /* Reveal Options, if any */ };
+        let options = { closeOnClick: true, hover: true, hoverPane: true};
         let $logoutElement = $('.logout-box');
         this.logoutBox = new Foundation.Dropdown($logoutElement, options);
         if (this.isLogged) {
