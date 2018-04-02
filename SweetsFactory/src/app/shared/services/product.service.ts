@@ -40,9 +40,7 @@ export class ProductService {
     saveNewProduct(newproduct: Product) {
         let newId = Math.floor(Math.random() * 100) + 40;
         newproduct.id = newId;
-        
         this.products.push(newproduct);
-        console.log(this.products);
         this.sharingService.setProductData(this.products);
         this.productAnnouncedSource.next(this.products);
     }
