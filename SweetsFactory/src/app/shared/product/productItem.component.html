@@ -1,5 +1,9 @@
-<div class="item">
-    <img class="img-15 float-center" src="../images/icecream.png" alt="">
-    <p class="text-center text-item">{{product.name}}</p>
-    <p class="text-center text-item">{{product.price}} ron</p>
+<div class="item" (click)="toggleState()">
+    <img class="img-15 float-center" [src]="imagePath" alt="">
+    <div [@prodItemState]="state" class="state-div" [ngStyle]="{'position': state ==='active' ?
+    'absolute' : 'relative'}">
+        <p class="text-center text-item">{{product.name}}</p>
+        <p class="text-center text-item">{{product.price}} ron</p>
+        <button [ngClass]="{'hide': state ==='inactive', 'hollow button shop-btn': true}">SHOP</button>
+    </div>
 </div>

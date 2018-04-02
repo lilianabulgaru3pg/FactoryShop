@@ -3,7 +3,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
-
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
@@ -35,9 +34,9 @@ module.exports = {
         exclude: helpers.root('src', 'app'),
         //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
         use: ExtractTextPlugin.extract({
-         fallback: "style-loader",
-         use: "css-loader!sass-loader",
-       })
+          fallback: "style-loader",
+          use: "css-loader!sass-loader",
+        })
       },
       {
         test: /\.css$/,
@@ -59,5 +58,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     })
-    ]
+  ]
 };
