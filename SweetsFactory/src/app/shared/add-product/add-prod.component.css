@@ -26,5 +26,5 @@ input, label, select, .incorrect-product-name p  {
 .incorrect-product-name {
     color: red;
     font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 1rem;
 }
