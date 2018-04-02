@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './start/app.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//services
-import { UserService } from './shared/services/user.service'
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserService } from './shared/services/user.service'
 import { NavComponent } from './shared/navbar/navbar.component';
 import { SearchBarComponent } from './shared/searchbar/search.component';
 import { AccountComponent } from './shared/account/account.component';
@@ -24,6 +23,7 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './shared/services/category.service';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { SharingService } from './shared/services/sharing.service';
 
 @NgModule({
     imports: [
@@ -51,6 +51,6 @@ import { HeaderComponent } from './shared/header/header.component';
         ErrorComponent
     ],
     bootstrap: [AppComponent],
-    providers: [UserService, ProductService, CategoryService]
+    providers: [UserService, ProductService, CategoryService, SharingService]
 })
 export class AppModule { }

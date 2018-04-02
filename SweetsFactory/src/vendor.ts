@@ -14,4 +14,4 @@ import 'foundation-sites';
 import 'foundation-sites/dist/js/foundation.js';
 // import 'foundation-sites/js/entries/foundation.js';
 // import 'foundation-sites/js/entries/foundation-plugins.js';
-import '../public/sass/styles.scss';
+import '../public/sass/styles.scss';

@@ -4,6 +4,7 @@ input {
     width: 12rem;
     margin-bottom: 1rem;
 }
+
 .incorrect-message {
     color: red;
 }
@@ -24,4 +25,8 @@ input {
 .custom-btn:hover, .custom-btn:focus {
     background-color: rgba(255, 166, 0, 0.911);
     border-color: gainsboro;
+}
+
+a {
+    outline-width: 0;
 }

@@ -16,3 +16,7 @@
     margin: auto;
     padding: auto;
 }
+
+a {
+    outline-width: 0;
+}
