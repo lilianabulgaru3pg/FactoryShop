@@ -37,7 +37,7 @@ export class AddProductComponent implements OnInit {
     }
 
     openNewProductModal() {
-        this.addProductModal.open();
+        // this.addProductModal.open();
     }
 
     close() { 

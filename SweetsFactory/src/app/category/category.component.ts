@@ -28,9 +28,7 @@ export class CategoryComponent implements OnInit {
             }
         )
     }
-    openNewCategoryModal() {
-        this.newCategoryModal.open();
-    }
+    openNewCategoryModal() {}
 
     saveNewCategory() {
         let newCategory = new Category();
