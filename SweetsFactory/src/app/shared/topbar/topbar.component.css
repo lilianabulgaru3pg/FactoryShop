@@ -11,8 +11,3 @@ ul {
 .top-bar, .top-bar ul {
     background-color: rgb(252, 252, 252);
 }
-
-.top-bar-right .button {
-    padding: 1%;
-    padding-left: 1rem;
-}
