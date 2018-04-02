@@ -7,10 +7,14 @@
         <table class="hover table-box">
             <thead>
                 <tr>
-                    <th width="150">Name</th>
+                    <th width="150">Name
+                        <button class="button sort-btn" (click)="sortAscDesc()">
+                            <img src="../shared/images/sort.png" class="float-center" alt="" > 
+                        </button>
+                    </th>
                     <th width="150">Category</th>
-                    <th width="150">Price</th>
-                    <th width="150">Stock</th>
+                    <th width="100">Price</th>
+                    <th width="100">Stock</th>
                     <th width="150">Status</th>
                     <th width="50"></th>
                 </tr>
@@ -23,7 +27,7 @@
                     <td>{{product.stock}}</td>
                     <td>{{getStatus(product)}}</td>
                     <td>
-                        <a data-open="editProductModal" class="edit-product-link " (click)="openModal(product)">edit</a>
+                        <a data-open="editProductModal" class="edit-product-link float-center" (click)="openModal(product)">edit</a>
                     </td>
                 </tr>
             </tbody>

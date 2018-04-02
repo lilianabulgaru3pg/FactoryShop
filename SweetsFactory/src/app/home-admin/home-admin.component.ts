@@ -10,6 +10,7 @@ import { CategoryService } from '../shared/services/category.service';
     styleUrls: ['./home-admin.component.css']
 })
 export class HomeAdminComponent implements OnInit {
+    sortAsc: boolean = false;
     products: Product[];
     header: string = "Products";
     editedProduct: Product;
@@ -30,7 +31,7 @@ export class HomeAdminComponent implements OnInit {
         this.editProductModal = new Foundation.Reveal($editProductElem, options);
     }
     openModal(product: Product) {
-        this.editedProduct = Object.assign({},product);
+        this.editedProduct = Object.assign({}, product);
     }
 
     getStatus(product: Product): string {
@@ -39,6 +40,11 @@ export class HomeAdminComponent implements OnInit {
 
     getCategoryName(product: Product): string {
         return this.categoryService.getCategoryName(product.category);
+    }
+
+    sortAscDesc() {
+        this.sortAsc = this.sortAsc === false ? true : false;
+        this.sortAsc ? this.products.sort((n1, n2) => (n1.name > n2.name ? 1 : -1)) : this.products.reverse();
     }
 }
 
