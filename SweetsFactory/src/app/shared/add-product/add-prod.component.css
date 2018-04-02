@@ -16,10 +16,10 @@
 }
 
 input, select {
-    width: 60%;
+    width: 65%;
 }
 
-input, label, select {
+input, label, select, .incorrect-product-name p  {
     margin-left: 2%;
 }
 
