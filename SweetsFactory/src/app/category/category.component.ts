@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CategoryService } from '../shared/services/category.service';
 import { Stock } from '../shared/model/stock';
 import { Category } from '../shared/model/category';
@@ -9,17 +9,20 @@ import { Category } from '../shared/model/category';
 })
 export class CategoryComponent implements OnInit {
     stocks: Stock[];
-    emptyCategoryName = false;
+    emptyCategoryName: boolean = false;
     categoryName: string;
     header: string = "Categories";
-    reveal: any;
+    @ViewChild('reveal') reveal: ElementRef;
 
     ngOnInit(): void {
-        this.reveal = $('.reveal');
-        this.reveal.foundation();
+        let options = { /* Reveal Options, if any */ };
+        let $revealElement = $(this.reveal.nativeElement);
+        var elem = new Foundation.Reveal($revealElement, options);
+
+        console.log(this.categoryName);
     }
 
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoryService, myElement: ElementRef) {
         this.stocks = categoryService.stock;
         categoryService.categoryAnnounced$.subscribe(
             newCategories => {
@@ -29,10 +32,11 @@ export class CategoryComponent implements OnInit {
     }
 
     saveNewCategory() {
-        if (this.categoryName !== undefined && this.categoryName !== ' ') {
+        if (this.categoryName !== undefined && this.categoryName !== '') {
             this.categoryService.saveCategory(this.categoryName);
-            this.reveal.foundation('close');
+            $(this.reveal.nativeElement).foundation('close');
             this.categoryName = '';
+            this.emptyCategoryName = false;
         } else {
             this.emptyCategoryName = true;
         }
@@ -40,6 +44,7 @@ export class CategoryComponent implements OnInit {
 
     close() {
         this.categoryName = '';
+        this.emptyCategoryName = false;
     }
 }
 

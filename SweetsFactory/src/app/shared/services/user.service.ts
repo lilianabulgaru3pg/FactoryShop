@@ -27,7 +27,7 @@ export class UserService {
     userLoggedIn(user: User) {
         this.currentUser = user;
         this.sharingService.setUserData(this.currentUser);
-        this.loginAnnouncedSource.next(user);
+        this.loginAnnouncedSource.next(this.currentUser);
     }
 
     getUsers() {

@@ -1,6 +1,5 @@
 .header{
     background-color: rgba(255, 255, 255, 0.877);
-    height: 5rem;
     width: 100%;
     border-bottom: solid 1px rgba(189, 189, 189, 0.856);
     border-radius: 0;
@@ -10,6 +9,7 @@
 .header h5{
     display: table-cell;
     vertical-align: middle;
+    padding: 2.5%;
     padding-left: 1rem;
     color: rgb(107, 106, 106);
 }

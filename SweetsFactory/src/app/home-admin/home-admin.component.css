@@ -1,7 +1,8 @@
-.top-header, .footer {
+.table-top-header, .footer {
     height: 4rem;
     background-color: white;
 }
+
 .table-box {
     margin: 0;
     padding: 2rem;
@@ -11,11 +12,12 @@
     margin: 2%;
     border: solid 1px rgba(128, 128, 128, 0.404);
     border-radius: 0;
+    overflow: scroll;
 }
 
 thead th {
-    height: 4rem;
-    background-color: rgb(248, 247, 247);
+    height: 3rem;
+    background-color: white;
 }
 
 table tr:nth-child(odd) td{

@@ -3,12 +3,12 @@
     <div class="cell small-11 table-div">
         <div class="top-header">
             <a data-open="categoryModal" class="new-category-link">Add a new category</a>
-            <div class="reveal tiny category-modal" id="categoryModal" data-reveal>
+            <div class="reveal tiny category-modal" id="categoryModal" data-reveal #reveal>
                 <h5>Add category</h5>
                 <label>Category Name:
                     <input [(ngModel)]="categoryName" type="text" placeholder="" />
                 </label>
-                <div *ngIf="emptyCategoryName" class="incorrect-category-name text-center">
+                <div [ngClass]="{'invisible': !emptyCategoryName}" class="incorrect-category-name text-center">
                     <p>Category name is empty!</p>
                 </div>
                 <div class="button-group float-right">
