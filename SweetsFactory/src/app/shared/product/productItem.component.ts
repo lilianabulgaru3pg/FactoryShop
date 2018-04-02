@@ -9,11 +9,13 @@ import { Product } from '../model/product';
 
 export class ProductItemComponent {
     @Input() product: Product;
-
     imagePath: string;
 
     ngOnInit() {
         this.imagePath = require(`../images/${this.product.img}`);
     }
 
+    getProductStockStatus() {
+        return this.product.stock != 0 ? true : false;
+    }
 }

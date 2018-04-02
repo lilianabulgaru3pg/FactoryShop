@@ -24,7 +24,7 @@
         </div>
         <div class="button-group float-right">
             <button class="secondary button close-btn" data-close type="button" (click)="close(); addProductForm.reset()">Close</button>
-            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct(); addProductForm.reset()">Save</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct(); addProductForm.reset()" data-close>Save</button>
         </div>
         <button class="close-button" data-close type="button" (click)="close(); addProductForm.reset()">
             &times;
