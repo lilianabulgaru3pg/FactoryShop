@@ -23,7 +23,7 @@ input, label, select {
     margin-left: 2%;
 }
 
-.incorrect-category-name {
+.incorrect-product-name {
     color: red;
     font-size: 14px;
 }
