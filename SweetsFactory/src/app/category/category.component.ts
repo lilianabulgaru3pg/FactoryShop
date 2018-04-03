@@ -33,13 +33,16 @@ export class CategoryComponent implements OnInit {
     }
 
     saveNewCategory() {
-        this.categoryService.saveCategory(this.newCategoryName);
+        let newCategory = new Category();
+        newCategory.name = this.newCategoryName;
+        let newId = Math.floor(Math.random() * 100) + 4;
+        newCategory.id = newId
+        this.categoryService.saveCategory(Object.assign({},newCategory));
         this.newCategoryModal.close();
         this.newCategoryName = '';
     }
 
     close() {
-        console.log('aicii4');
         this.newCategoryName = '';
         this.newCategoryModal.close();
     }

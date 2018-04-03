@@ -9,7 +9,7 @@ import { Category, CategoryType } from '../model/category';
   styleUrls: ['./edit.component.css'],
 })
 
-export class EditComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
   @ViewChild('editReveal') editCategoryReveal: ElementRef;
   editCategoryName: string;
   @Input() categoryModel: CategoryType;
@@ -19,9 +19,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: any) {
-    console.log(changes);
-  }
+  ngOnChanges(changes: any) {}
 
   saveEditedCategory() {
     this.categoryService.editCategory(this.categoryModel.categoryId, this.editCategoryName);

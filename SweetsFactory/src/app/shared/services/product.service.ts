@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 import { PRODUCTS } from '../../mock-products';
+import { Subject } from 'rxjs';
+import { SharingService } from './sharing.service';
 
 @Injectable()
 export class ProductService {
     products: Product[];
+    private productAnnouncedSource = new Subject<Product[]>();
+    productAnnounced$ = this.productAnnouncedSource.asObservable();
 
-    constructor() {
-        this.products = this.getProducts();
+    constructor(private sharingService: SharingService) {
+        let storedData = this.sharingService.hasProductData();
+        if (storedData) {
+            this.products = this.sharingService.getProductData();
+        } else {
+            this.products = PRODUCTS;
+        }
     }
 
     productStatus(product: Product): string {
@@ -15,16 +24,24 @@ export class ProductService {
     }
 
     getProducts() {
-        return PRODUCTS;
+        return this.products;
     }
 
     getProductsForCategory(categoryId: number): Array<Product> {
-        var products = new Array<Product>();
+        var categoryProducts = new Array<Product>();
         this.products.forEach(product => {
-            if (categoryId === product.category){
-                products.push(product);
+            if (categoryId === product.category) {
+                categoryProducts.push(product);
             }
         });
-        return products;
+        return categoryProducts;
+    }
+
+    saveNewProduct(newproduct: Product) {
+        let newId = Math.floor(Math.random() * 100) + 40;
+        newproduct.id = newId;
+        this.products.push(newproduct);
+        this.sharingService.setProductData(this.products);
+        this.productAnnouncedSource.next(this.products);
     }
 }

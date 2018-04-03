@@ -12,8 +12,12 @@ import { CategoryService } from '../shared/services/category.service';
 export class HomeAdminComponent {
     products: Product[];
     header: string = "Products";
+
     constructor(private productService: ProductService, public categoryService: CategoryService) {
         this.products = this.productService.getProducts();
+        this.productService.productAnnounced$.subscribe(newProducts => {
+            this.products = newProducts;
+        });
     }
 
     getStatus(product: Product): string {

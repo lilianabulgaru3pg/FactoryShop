@@ -4,11 +4,12 @@
     height: 100%;
 }
 
-.table-div {
+.table-widget {
     margin: 2%;
     border: solid 1px rgba(128, 128, 128, 0.404);
     border-radius: 0;
     overflow: scroll;
+    background-color: white;
 }
 
 thead th {
@@ -63,6 +64,7 @@ input {
 .incorrect-category-name {
     color: red;
     font-size: 14px;
+    font-size: 1.4rem;
 }
 
 a {
