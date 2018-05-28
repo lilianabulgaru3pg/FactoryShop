@@ -1,0 +1,36 @@
+<div class="grid-y grid-div">
+    <header-box [headerName]='header' class="cell small-1 top-header"></header-box>
+    <div class="cell small-10 table-widget">
+        <div class="table-top-header">
+            <add-prod></add-prod>
+        </div>
+        <table class="hover table-box">
+            <thead>
+                <tr>
+                    <th width="150">Name</th>
+                    <th width="150">Category</th>
+                    <th width="150">Price</th>
+                    <th width="150">Stock</th>
+                    <th width="150">Status</th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.name}}</td>
+                    <td>{{getCategoryName(product)}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.stock}}</td>
+                    <td>{{getStatus(product)}}</td>
+                    <td>
+                        <a data-open="editProductModal" class="edit-product-link " (click)="openModal(product)">edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer"></div>
+        <div class="reveal  tiny" id="editProductModal" data-reveal #editProductReveal>
+            <edit-prod-modal [productModel]="editedProduct"></edit-prod-modal>
+        </div>
+    </div>
+</div>

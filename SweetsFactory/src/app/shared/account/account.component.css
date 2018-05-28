@@ -1,0 +1,30 @@
+.disable-click {
+    pointer-events: none;
+    cursor: default;
+}
+
+.button {
+    border: none;
+    margin: 0;
+}
+
+.logout-box {
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+.logout-btn {
+    display: block;
+    margin: auto;
+    padding: auto;
+}
+
+a {
+    outline-width: 0;
+}
+
+.login-button {
+    padding: 1%;
+    padding-left: 1rem;
+}
