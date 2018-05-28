@@ -11,8 +11,7 @@ export class ProductService {
     productAnnounced$ = this.productAnnouncedSource.asObservable();
 
     constructor(private sharingService: SharingService) {
-        let storedData = this.sharingService.hasProductData();
-        if (storedData) {
+        if (this.sharingService.hasProductData()) {
             this.products = this.sharingService.getProductData();
         } else {
             this.products = PRODUCTS;
@@ -41,6 +40,14 @@ export class ProductService {
         let newId = Math.floor(Math.random() * 100) + 40;
         newproduct.id = newId;
         this.products.push(newproduct);
+        this.sharingService.setProductData(this.products);
+        this.productAnnouncedSource.next(this.products);
+    }
+
+    editProduct(product: Product) {
+        let editedProductIdx = this.products.findIndex(elem => elem.id === product.id);
+        console.log('editedProductIdx', editedProductIdx);
+        this.products[editedProductIdx] = product;
         this.sharingService.setProductData(this.products);
         this.productAnnouncedSource.next(this.products);
     }

@@ -1,7 +1,13 @@
 .img-15 {
-    display: block;
-    height: 12rem;
+    height: 13rem;
     width: 11rem;
+}
+.img-5 {
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 .item {
@@ -11,21 +17,35 @@
     border: solid 1px rgba(184, 184, 184, 0.116);
     border-radius: 0;
     line-height: 0;
-    position: relative;
 }
 
 .text-item {
-    color: rgb(100, 100, 100);
+    color: rgb(54, 54, 54);
+    margin-top: 1rem;
 }
 
-.state-div {
-    min-width: 100%;
-    min-height: 100%;
-    right: 0;
-    left: 0;
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper:hover .slide {
+    transition: 1s;
+    bottom: 0;
+    background: white;
 }
 
 .shop-btn {
     display: block;
     margin: auto;
+}
+
+.slide {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    bottom: -70%;
+    background: transparent;
+    opacity: 0.85;
+    transition: 1s;
 }

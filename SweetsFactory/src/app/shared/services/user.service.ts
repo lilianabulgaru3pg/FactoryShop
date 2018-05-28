@@ -16,8 +16,7 @@ export class UserService {
 
     constructor(public sharingService: SharingService) {
         this.users = this.getUsers();
-        let storedData = this.sharingService.hasUserData();
-        if (storedData) {
+        if (this.sharingService.hasUserData()) {
             this.currentUser = this.sharingService.getUserData();
             this.isLogged = true;
             this.loginAnnouncedSource.next(this.currentUser);

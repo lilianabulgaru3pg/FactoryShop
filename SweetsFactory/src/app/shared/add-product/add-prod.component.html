@@ -1,4 +1,4 @@
-<a data-open="productNewModal" class="new-product-link float-right" (click)="openNewCategoryModal()">Add a New Product</a>
+<a data-open="productNewModal" class="new-product-link float-right" (click)="openNewProductModal()">Add a New Product</a>
 <div class="reveal  tiny new-product-modal" id="productNewModal" data-reveal #addProductReveal>
     <h5>Add Product</h5>
     <form #addProductForm="ngForm">
@@ -24,7 +24,7 @@
         </div>
         <div class="button-group float-right">
             <button class="secondary button close-btn" data-close type="button" (click)="close(); addProductForm.reset()">Close</button>
-            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct(); addProductForm.reset()">Save</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct(); addProductForm.reset()" data-close>Save</button>
         </div>
         <button class="close-button" data-close type="button" (click)="close(); addProductForm.reset()">
             &times;

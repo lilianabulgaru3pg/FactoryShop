@@ -18,12 +18,15 @@ export class CategoryService {
 
     constructor(private productService: ProductService, private sharingService: SharingService) {
         this.products = this.productService.getProducts();
-        let storedData = this.sharingService.hasCategoryData();
-        if (storedData) {
+        if (this.sharingService.hasCategoryData()) {
             this.categories = this.sharingService.getCategoryData();
         } else {
             this.categories = CATEGORY;
         }
+        this.productService.productAnnounced$.subscribe(newProducts => {
+            this.products = newProducts;
+            this.getCategoryByType();
+        });
         this.getCategoryByType();
     }
 
@@ -71,16 +74,17 @@ export class CategoryService {
     }
 
     getCategoryByType() {
+        var newCategoryType = new Array<CategoryType>();
         this.categories.forEach(elem => {
             let products: Array<Product> = this.productService.getProductsForCategory(elem.id);
-            if (products) {
-                let categoryType = new CategoryType();
-                categoryType.name = elem.name;
-                categoryType.categoryId = elem.id;
-                categoryType.products = products;
-                this.categoryTypes.push(categoryType);
-            }
+            let categoryType = new CategoryType();
+            categoryType.name = elem.name;
+            categoryType.categoryId = elem.id;
+            categoryType.products = products;
+            newCategoryType.push(categoryType);
         });
+        this.categoryTypes = newCategoryType;
+        this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 
     editCategory(categoryId: number, newCategoryName: string) {

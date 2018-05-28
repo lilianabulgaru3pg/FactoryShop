@@ -1,0 +1,30 @@
+<h5>Edit Product</h5>
+<form #editProductForm="ngForm">
+    <label>Name:
+        <input [(ngModel)]="productModel.name" type="text" name="name" required minlength="1" />
+    </label>
+    <label>Price:
+        <input [(ngModel)]="productModel.price" type="number" name="price" required/>
+    </label>
+    <label>Stock:
+        <input [(ngModel)]="productModel.stock" type="number" name="stock" required/>
+    </label>
+    <label>Category:</label>
+    <select [(ngModel)]="productModel.category" name="category" required>
+        <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+    </select>
+    <label>Image:</label>
+    <select [(ngModel)]="productModel.img" name="image" required>
+        <option *ngFor="let img of images" [value]="img">{{img}}</option>
+    </select>
+    <div class="incorrect-product-name" [ngClass]="{'invisible': editProductForm.form.valid}">
+        <p>To edit a new product, all field should be valid!</p>
+    </div>
+    <div class="button-group float-right">
+        <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
+        <button class="success button save-category-btn float-right" type="button" [disabled]="!editProductForm.form.valid" (click)="saveEditedProduct()" data-close>Save</button>
+    </div>
+    <button class="close-button" data-close type="button" (click)="close()">
+        &times;
+    </button>
+</form>

@@ -1,5 +1,5 @@
 <a data-open="categoryEditModal" class="edit-category-link" (click)="openModal()">edit</a>
-<div class="reveal small category-edit-modal" id="categoryEditModal" data-reveal #editReveal>
+<div class="reveal tiny category-edit-modal" id="categoryEditModal" data-reveal #editReveal>
     <h5>Edit category</h5>
     <form #editCategoryForm="ngForm">
         <label>Edit Category Name:
@@ -10,7 +10,7 @@
         </div>
         <div class="button-group float-right">
             <button class="secondary button close-btn" data-close type="button" (click)="close(); editCategoryForm.reset()">Close</button>
-            <button class="success button save-category-btn float-right" type="button" [disabled]="!editCategoryForm.form.valid" (click)="saveEditedCategory(); editCategoryForm.reset()">Save</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!editCategoryForm.form.valid" (click)="saveEditedCategory(); editCategoryForm.reset()" data-close>Save</button>
         </div>
         <button class="close-button" data-close type="button" (click)="close(); editCategoryForm.reset()">
             &times;
