@@ -1,0 +1,9 @@
+<div class="item wrapper">
+    <img class="img-15 float-center" [src]="imagePath" alt="">
+    <img class="float-right img-5" src="../images/sold.png" alt="" [ngClass]="{'invisible': getProductStockStatus()}">
+    <div class="slide">
+        <p class="text-center text-item">{{product.name}}</p>
+        <p class="text-center text-item">{{product.price}} ron</p>
+        <button class="button shop-btn">SHOP</button>
+    </div>
+</div>

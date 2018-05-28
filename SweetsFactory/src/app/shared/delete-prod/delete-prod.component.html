@@ -1,0 +1,8 @@
+<h6 class="float-center text-center">Are you sure you want to delete product {{deleteProductModel.name}}?</h6>
+<div class="button-group float-right">
+    <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
+    <button class="delete button delete-btn float-right" type="button" (click)="deleteProduct()" data-close>Delete</button>
+</div>
+<button class="close-button" data-close type="button" (click)="close()">
+    &times;
+</button>

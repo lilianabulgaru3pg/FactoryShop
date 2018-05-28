@@ -1,0 +1,33 @@
+<a data-open="productNewModal" class="new-product-link float-right" (click)="openNewProductModal()">Add a New Product</a>
+<div class="reveal  tiny new-product-modal" id="productNewModal" data-reveal #addProductReveal>
+    <h5>Add Product</h5>
+    <form #addProductForm="ngForm">
+        <label>Name:
+            <input [(ngModel)]="newProduct.name" type="text" name="name" required minlength="1" />
+        </label>
+        <label>Price:
+            <input [(ngModel)]="newProduct.price" type="number" name="price" required/>
+        </label>
+        <label>Stock:
+            <input [(ngModel)]="newProduct.stock" type="number" name="stock" required/>
+        </label>
+        <label>Category:</label>
+        <select [(ngModel)]="newProduct.category" name="category" required>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+        </select>
+        <label>Image:</label>
+        <select [(ngModel)]="newProduct.img" name="image" required>
+            <option *ngFor="let img of images" [value]="img">{{img}}</option>
+        </select>
+        <div class="incorrect-product-name" [ngClass]="{'invisible': addProductForm.form.valid}">
+            <p>To save a new product, complete all the fields!</p>
+        </div>
+        <div class="button-group float-right">
+            <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct()" data-close>Save</button>
+        </div>
+        <button class="close-button" data-close type="button" (click)="close()">
+            &times;
+        </button>
+    </form>
+</div>
