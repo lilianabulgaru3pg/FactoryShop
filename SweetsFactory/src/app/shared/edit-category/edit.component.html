@@ -1,19 +1,17 @@
-<a data-open="categoryEditModal" class="edit-category-link" (click)="openModal()">edit</a>
-<div class="reveal tiny category-edit-modal" id="categoryEditModal" data-reveal #editReveal>
-    <h5>Edit category</h5>
-    <form #editCategoryForm="ngForm">
-        <label>Edit Category Name:
-            <input [(ngModel)]="editCategoryName" type="text" name="name" required minlength="1" #categoryName="ngModel" />
-        </label>
-        <div [ngClass]="{'invisible':  categoryName.valid || categoryName.pristine }" class="incorrect-category-name text-center">
-            <p>Category name is empty!</p>
-        </div>
-        <div class="button-group float-right">
-            <button class="secondary button close-btn" data-close type="button" (click)="close(); editCategoryForm.reset()">Close</button>
-            <button class="success button save-category-btn float-right" type="button" [disabled]="!editCategoryForm.form.valid" (click)="saveEditedCategory(); editCategoryForm.reset()" data-close>Save</button>
-        </div>
-        <button class="close-button" data-close type="button" (click)="close(); editCategoryForm.reset()">
-            &times;
-        </button>
-    </form>
-</div>
+<h5>Edit category</h5>
+<form #editCategoryForm="ngForm">
+    <label>Edit Category Name:
+        <input [(ngModel)]="categoryModel.name" type="text" name="name" required minlength="1" #categoryName="ngModel" />
+    </label>
+    <div [ngClass]="{'invisible': editCategoryForm.form.valid}" class="incorrect-category-name text-center">
+        <p>Category name is empty!</p>
+    </div>
+    <div class="button-group float-right">
+        <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
+        <button class="success button save-category-btn float-right" type="button" [disabled]="!editCategoryForm.form.valid" (click)="saveEditedCategory()"
+            data-close>Save</button>
+    </div>
+    <button class="close-button" data-close type="button" (click)="close()">
+        &times;
+    </button>
+</form>

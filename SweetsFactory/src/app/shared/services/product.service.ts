@@ -45,9 +45,26 @@ export class ProductService {
     }
 
     editProduct(product: Product) {
-        let editedProductIdx = this.products.findIndex(elem => elem.id === product.id);
-        console.log('editedProductIdx', editedProductIdx);
-        this.products[editedProductIdx] = product;
+        this.products.forEach(elem => {
+            if (elem.id === product.id) {
+                elem.name = product.name;
+                elem.category = product.category;
+                elem.stock = product.stock;
+                elem.price = product.price;
+                elem.img = product.img;
+                return;
+            }
+        });
+
+        this.sharingService.setProductData(this.products);
+        this.productAnnouncedSource.next(this.products);
+    }
+
+    deleteProduct(product: Product) {
+        let index: number = this.products.indexOf(product);
+        if (index !== -1) {
+            this.products.splice(index, 1);
+        }
         this.sharingService.setProductData(this.products);
         this.productAnnouncedSource.next(this.products);
     }

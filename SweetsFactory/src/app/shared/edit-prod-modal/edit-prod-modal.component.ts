@@ -24,13 +24,13 @@ export class EditProductModalComponent {
             }
         )
     }
-    
-    close() {
-        console.log('aiciiii', this.productModel)
+    ngOnInit(): void {
+        console.log(this.productModel);
     }
+    
+    close() {}
 
     saveEditedProduct() {
-        console.log('aiciiii3', this.productModel)
         this.productModel.category = Number(this.productModel.category);
         this.productService.editProduct(this.productModel);
     }

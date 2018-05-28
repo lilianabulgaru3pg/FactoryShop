@@ -87,17 +87,20 @@ export class CategoryService {
         this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 
-    editCategory(categoryId: number, newCategoryName: string) {
+    editCategory(categoryType: CategoryType) {
+        this.categoryTypes.forEach(category => {
+            if (category.categoryId === categoryType.categoryId) {
+                category.name = categoryType.name;
+                category.products = categoryType.products;
+            }
+        });
+
         this.categories.forEach(category => {
-            if (categoryId === category.id) {
-                category.name = newCategoryName;
+            if (categoryType.categoryId === category.id) {
+                category.name = categoryType.name;
             }
         });
-        this.categoryTypes.forEach(categoryType => {
-            if (categoryId === categoryType.categoryId) {
-                categoryType.name = newCategoryName;
-            }
-        });
+        this.sharingService.setCategoryData(this.categories);
         this.categoryAnnouncedSource.next(this.categoryTypes);
     }
 }

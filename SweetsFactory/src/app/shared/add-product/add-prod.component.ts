@@ -37,7 +37,7 @@ export class AddProductComponent implements OnInit {
     }
 
     openNewProductModal() {
-        // this.addProductModal.open();
+
     }
 
     close() { 
@@ -46,7 +46,7 @@ export class AddProductComponent implements OnInit {
 
     saveNewProduct(){
         this.newProduct.category = Number(this.newProduct.category);
-        this.productService.saveNewProduct(Object.assign({},this.newProduct));
+        this.productService.saveNewProduct(jQuery.extend(true, {},this.newProduct));
         this.addProductModal.close();
     }
 }

@@ -32,3 +32,20 @@ table tr:nth-child(even) td{
 .table-header .header {
     height: 3rem;
 }
+
+.sort-btn {
+    display: inline;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.sort-btn img {
+    width: 0.8rem;
+    height: 1rem;
+}
+
+.delete-sign {
+    width: 1rem;
+    height: 1rem;
+}

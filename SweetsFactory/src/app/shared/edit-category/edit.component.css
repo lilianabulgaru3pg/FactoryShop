@@ -6,7 +6,7 @@ a, .reveal{
     margin-right: 5px;
 }
 
-.category-edit-modal label {
+label {
     padding-top: 1rem;
     border-top: solid 1px rgba(128, 128, 128, 0.404);
     border-radius: 0;
