@@ -6,19 +6,20 @@
             <div class="reveal tiny category-modal" id="newCategoryModal" data-reveal #newCategoryReveal>
                 <h5>Add category</h5>
                 <form #addCategoryForm="ngForm">
-                <label>Category Name:
-                    <input [(ngModel)]="newCategoryName" type="text" name="name" required minlength="1" #newCategory />
-                </label>
-                <div [ngClass]="{'invisible': !newCategory.valid || newCategory.pristine }" class="incorrect-category-name text-center">
-                    <p>Category name is empty!</p>
-                </div>
-                <div class="button-group float-right">
-                    <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
-                    <button class="success button save-category-btn float-right" type="button" [disabled]="!addCategoryForm.form.valid" (click)="saveNewCategory()" data-close>Save</button>
-                </div>
-                <button class="close-button" data-close type="button" (click)="close()">
-                    &times;
-                </button>
+                    <label>Category Name:
+                        <input [(ngModel)]="newCategoryName" type="text" name="name" required minlength="1" #newCategory />
+                    </label>
+                    <div [ngClass]="{'invisible': addCategoryForm.form.valid }" class="incorrect-category-name text-center float-center">
+                        <p>Category name is empty!</p>
+                    </div>
+                    <div class="button-group float-right">
+                        <button class="secondary button close-btn" data-close type="button" (click)="close(); addCategoryForm.reset()">Close</button>
+                        <button class="success button save-category-btn float-right" type="button" [disabled]="!addCategoryForm.form.valid" (click)="saveNewCategory()"
+                            data-close>Save</button>
+                    </div>
+                    <button class="close-button" data-close type="button" (click)="close(); addCategoryForm.reset()">
+                        &times;
+                    </button>
                 </form>
             </div>
         </div>
@@ -35,11 +36,14 @@
                     <td>{{category.name}}</td>
                     <td>{{category.products?.length}}</td>
                     <td>
-                        <edit [categoryModel]="category"></edit>
+                        <a data-open="categoryEditModal" class="edit-category-link" (click)="openEditCategoryModal(category)">edit</a>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="footer"></div>
+        <div class="reveal tiny category-edit-modal" id="categoryEditModal" data-reveal #editReveal>
+            <edit [categoryModel]="editedCategory"></edit>
+        </div>
     </div>
 </div>

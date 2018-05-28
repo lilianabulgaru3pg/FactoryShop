@@ -28,7 +28,7 @@
                     <td>{{product.stock}}</td>
                     <td>{{getStatus(product)}}</td>
                     <td>
-                        <a data-open="editProductModal" class="edit-product-link float-center" (click)="openModal(product)">edit</a>
+                        <a data-open="editProductModal" class="edit-product-link float-center" (click)="openEditModal(product)">edit</a>
                     </td>
                     <td>
                         <a data-open="deleteProductModal" class="delete-product-link float-center" (click)="openDeleteModal(product)">
@@ -39,8 +39,11 @@
             </tbody>
         </table>
         <div class="footer"></div>
-        <div class="reveal  tiny" id="editProductModal" data-reveal #editProductReveal>
+        <div class="reveal tiny" id="editProductModal" data-reveal #editProductReveal>
             <edit-prod-modal [productModel]="editedProduct"></edit-prod-modal>
+        </div>
+        <div class="reveal tiny" id="deleteProductModal" data-reveal #deleteProductReveal>
+            <delete-prod-modal [deleteProductModel]="editedProduct"></delete-prod-modal>
         </div>
     </div>
 </div>

@@ -23,10 +23,10 @@
             <p>To save a new product, complete all the fields!</p>
         </div>
         <div class="button-group float-right">
-            <button class="secondary button close-btn" data-close type="button" (click)="close(); addProductForm.reset()">Close</button>
-            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct(); addProductForm.reset()" data-close>Save</button>
+            <button class="secondary button close-btn" data-close type="button" (click)="close()">Close</button>
+            <button class="success button save-category-btn float-right" type="button" [disabled]="!addProductForm.form.valid" (click)="saveNewProduct()" data-close>Save</button>
         </div>
-        <button class="close-button" data-close type="button" (click)="close(); addProductForm.reset()">
+        <button class="close-button" data-close type="button" (click)="close()">
             &times;
         </button>
     </form>

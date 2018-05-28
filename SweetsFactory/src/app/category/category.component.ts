@@ -13,11 +13,16 @@ export class CategoryComponent implements OnInit {
     header: string = "Categories";
     newCategoryModal: FoundationSites.Reveal;
     @ViewChild('newCategoryReveal') newCategoryReveal: ElementRef;
+    @ViewChild('editReveal') editCategoryReveal: ElementRef;
+    editCategoryModal: FoundationSites.Reveal;
+    editedCategory: CategoryType;
 
     ngOnInit(): void {
-        let options = {};
         let $newCategoryElement = $(this.newCategoryReveal.nativeElement);
-        this.newCategoryModal = new Foundation.Reveal($newCategoryElement, options);
+        this.newCategoryModal = new Foundation.Reveal($newCategoryElement, {});
+
+        let $editCategoryElement = $(this.editCategoryReveal.nativeElement);
+        this.editCategoryModal = new Foundation.Reveal($editCategoryElement, {});
     }
 
     constructor(public categoryService: CategoryService, myElement: ElementRef) {
@@ -27,15 +32,16 @@ export class CategoryComponent implements OnInit {
                 this.categoryTypes = this.categoryService.categoryTypes;
             }
         )
+        this.editedCategory = new CategoryType();
     }
-    openNewCategoryModal() {}
+    openNewCategoryModal() { }
 
     saveNewCategory() {
         let newCategory = new Category();
         newCategory.name = this.newCategoryName;
         let newId = Math.floor(Math.random() * 100) + 4;
         newCategory.id = newId
-        this.categoryService.saveCategory(Object.assign({}, newCategory));
+        this.categoryService.saveCategory(newCategory);
         this.newCategoryModal.close();
         this.newCategoryName = '';
     }
@@ -43,6 +49,10 @@ export class CategoryComponent implements OnInit {
     close() {
         this.newCategoryName = '';
         this.newCategoryModal.close();
+    }
+
+    openEditCategoryModal(categoryType: CategoryType) {
+        this.editedCategory = jQuery.extend(true, {}, categoryType);
     }
 }
 
